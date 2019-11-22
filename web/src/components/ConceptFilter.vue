@@ -96,14 +96,10 @@ export default {
     },
     clearFilters() {
       this.$store.commit("toggleAPILoading");
-
       this.search_string = "";
-      this.query_data.ConceptType = [];
-      this.query_data.ConceptRegion = [];
-      this.query_data.ConceptCertificationType = [];
       this.$store.commit("clearQueryString");
-      this.$store.commit("callAPI");
-      this.$store.commit("updateCurrentPage", 1);
+      this.$store.commit("clearConceptsChks")
+      this.$store.commit("callAPI", "concepts");
     },
     updateSearch() {
       this.$store.commit("toggleAPILoading");

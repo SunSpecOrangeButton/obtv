@@ -15,22 +15,10 @@ import Vuex from 'vuex'
 import TypesPage from "@/views/TypesPage.vue";
 import TypeFilter from "@/components/TypeFilter.vue"
 import TypeList from "@/components/TypeList.vue"
-
-let state
-let store
+import store from "@/store.js"
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
-
-state = {
-        searchTerm: "test",
-        apiData: [{"code": "sample", "type": "numeric"}],
-        returnItemsCount: 296
-}
-
-store = new Vuex.Store({
-    state
-})
 
 describe('TypesPage', () => {
 
@@ -47,6 +35,14 @@ describe('TypeFilter', () => {
     const wrapper = shallowMount(TypeFilter, {store, localVue})
     expect(wrapper.html()).toContain('numeric')
   })
+
+  it('clears all filters on clearFilters()', () => {
+    const wrapper = shallowMount(TypeFilter, {store, localVue})
+    wrapper.vm.clearFilters();
+    let result = wrapper.vm.$store.state.chkNumeric || wrapper.vm.$store.state.chkNonNumeric ||
+        wrapper.vm.search_string != "";
+    expect(result).toBe(false);
+   })
 })
 
 describe('TypeList', () => {

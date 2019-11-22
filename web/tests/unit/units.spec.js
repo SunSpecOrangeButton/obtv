@@ -15,22 +15,10 @@ import Vuex from 'vuex'
 import UnitsPage from "@/views/UnitsPage.vue";
 import UnitFilter from "@/components/UnitFilter.vue"
 import UnitList from "@/components/UnitList.vue"
-
-let state
-let store
+import store from "@/store.js"
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
-
-state = {
-        searchTerm: "test",
-        apiData: [{"id": "sample", "standard": "customary"}],
-        returnItemsCount: 296
-}
-
-store = new Vuex.Store({
-    state
-})
 
 describe('UnitsPage', () => {
 
@@ -46,6 +34,15 @@ describe('UnitFilter', () => {
   it('renders a correct markup clip', () => {
     const wrapper = shallowMount(UnitFilter, {store, localVue})
     expect(wrapper.html()).toContain('ISO 4217')
+  })
+
+  it('clears all filters on clearFilters()', () => {
+    const wrapper = shallowMount(UnitFilter, {store, localVue})
+    wrapper.vm.clearFilters();
+    let result = wrapper.vm.$store.state.chkCustomary || wrapper.vm.$store.state.chkISO4217 ||
+        wrapper.vm.$store.state.chkSI || wrapper.vm.$store.state.chkNonSI ||
+        wrapper.vm.search_string != "";
+    expect(result).toBe(false);
   })
 })
 

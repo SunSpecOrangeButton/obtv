@@ -93,14 +93,10 @@ export default {
     },
     clearFilters() {
       this.$store.commit("toggleAPILoading");
-
       this.search_string = "";
-      this.query_data.TypeType = [];
-      this.query_data.TypeRegion = [];
-      this.query_data.TypeCertificationType = [];
       this.$store.commit("clearQueryString");
-      this.$store.commit("callAPI");
-      this.$store.commit("updateCurrentPage", 1);
+      this.$store.commit("clearTypesChks")
+      this.$store.commit("callAPI", "types");
     },
     updateSearch() {
       this.$store.commit("toggleAPILoading");

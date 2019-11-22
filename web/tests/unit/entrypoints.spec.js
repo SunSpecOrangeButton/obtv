@@ -15,22 +15,10 @@ import Vuex from 'vuex'
 import EntrypointsPage from "@/views/EntrypointsPage.vue";
 import EntrypointFilter from "@/components/EntrypointFilter.vue"
 import EntrypointList from "@/components/EntrypointList.vue"
-
-let state
-let store
+import store from "@/store.js"
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
-
-state = {
-        searchTerm: "test",
-        apiData: [{"entrypoint": "Site", "type": "Data"}],
-        returnItemsCount: 160
-}
-
-store = new Vuex.Store({
-    state
-})
 
 describe('EntrypointsPage', () => {
 
@@ -46,6 +34,14 @@ describe('EntrypointFilter', () => {
   it('renders a correct markup clip', () => {
     const wrapper = shallowMount(EntrypointFilter, {store, localVue})
     expect(wrapper.html()).toContain('Documents')
+  })
+
+  it('clears all filters on clear clearFilters()', () => {
+    const wrapper = shallowMount(EntrypointFilter, {store, localVue})
+    wrapper.vm.clearFilters();
+    let result = wrapper.vm.$store.state.chkData || wrapper.vm.$store.state.chkDocuments ||
+        wrapper.vm.$store.state.chkProcess || wrapper.vm.search_string != "";
+    expect(result).toBe(false);
   })
 })
 

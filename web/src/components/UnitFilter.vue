@@ -99,13 +99,10 @@ export default {
     },
     clearFilters() {
       this.$store.commit("toggleAPILoading");
-
       this.search_string = "";
-      this.query_data.UnitType = [];
-      this.query_data.UnitRegion = [];
-      this.query_data.UnitCertificationType = [];
       this.$store.commit("clearQueryString");
-      this.$store.commit("callAPI");
+      this.$store.commit("clearUnitsChks")
+      this.$store.commit("callAPI", "units");
       this.$store.commit("updateCurrentPage", 1);
     },
     updateSearch() {

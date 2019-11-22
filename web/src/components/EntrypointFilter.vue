@@ -96,14 +96,10 @@ export default {
     },
     clearFilters() {
       this.$store.commit("toggleAPILoading");
-
       this.search_string = "";
-      this.query_data.EntrypointType = [];
-      this.query_data.EntrypointRegion = [];
-      this.query_data.EntrypointCertificationType = [];
       this.$store.commit("clearQueryString");
-      this.$store.commit("callAPI");
-      this.$store.commit("updateCurrentPage", 1);
+      this.$store.commit("clearEntrypointsChks")
+      this.$store.commit("callAPI", "entrypoints");
     },
     updateSearch() {
       this.$store.commit("toggleAPILoading");

@@ -16,22 +16,10 @@ import Vuex from 'vuex'
 import ConceptsPage from "@/views/ConceptsPage.vue";
 import ConceptFilter from "@/components/ConceptFilter.vue"
 import ConceptList from "@/components/ConceptList.vue"
-
-let state
-let store
+import store from "@/store.js"
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
-
-state = {
-        searchTerm: "test",
-        apiData: [{"name": "Curtailment", "taxonomy": "solar"}],
-        returnItemsCount: 296
-}
-
-store = new Vuex.Store({
-    state
-})
 
 describe('ConceptsPage', () => {
 
@@ -47,6 +35,14 @@ describe('ConceptFilter', () => {
   it('renders a correct markup clip', () => {
     const wrapper = shallowMount(ConceptFilter, {store, localVue})
     expect(wrapper.html()).toContain('US-Gaap')
+  })
+
+  it('clears all filters on clearFilters()', () => {
+    const wrapper = shallowMount(ConceptFilter, {store, localVue})
+    wrapper.vm.clearFilters();
+    let result = wrapper.vm.$store.state.chkSolar || wrapper.vm.$store.state.chkUSGaap ||
+        wrapper.vm.$store.state.chkDEI || wrapper.vm.search_string != "";
+    expect(result).toBe(false);
   })
 })
 
