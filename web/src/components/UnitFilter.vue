@@ -13,44 +13,45 @@
 -->
 
 <template>
-  <div class="public-filter">
-    <form @submit.prevent>
-      <h1>Keyword</h1>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          id="keyword_search"
-          v-model="$store.state.searchTerm"
-          @keyup.enter="updateQuery"
-        />
-      </div>
+    <div class="public-filter">
+        <form @submit.prevent>
+            <h1>Keyword</h1>
+            <div class="form-group">
+                <input
+                        type="text"
+                        class="form-control"
+                        id="keyword_search"
+                        v-model="$store.state.searchTerm"
+                        @keyup.enter="updateQuery"
+                />
+            </div>
 
-      <h1>Unit Type</h1>
-      <div class="form-group">
-        <label for="customary">
-          <input type="checkbox" id="customary" value="Customary" v-model="$store.state.chkCustomary" /> Customary
-        </label>
-        <label for="iso4217">
-          <input type="checkbox" id="iso4217" value="Iso4217" v-model="$store.state.chkISO4217" /> ISO 4217
-        </label>
-        <label for="si">
-          <input type="checkbox" id="si" value="Si" v-model="$store.state.chkSI" /> SI
-        </label>
-        <label for="nonsi">
-          <input type="checkbox" id="nonsi" value="NonSi" v-model="$store.state.chkNonSI" /> Non-SI
-        </label>
-      </div>
-      <div class="button-group">
-        <button type="button" class="btn btn-primary" @click="updateQuery">
-          <v-icon name="search" class="search-icon" />&nbsp; Search
-        </button>
-        <button type="button" class="btn btn-primary" @click="clearFilters">
-          <v-icon name="times" class="clear-icon" />&nbsp;&nbsp;Clear filters
-        </button>
-      </div>
-    </form>
-  </div>
+            <h1>Unit Type</h1>
+            <div class="form-group">
+                <label for="customary">
+                    <input type="checkbox" id="customary" value="Customary" v-model="$store.state.chkCustomary"/>
+                    Customary
+                </label>
+                <label for="iso4217">
+                    <input type="checkbox" id="iso4217" value="Iso4217" v-model="$store.state.chkISO4217"/> ISO 4217
+                </label>
+                <label for="si">
+                    <input type="checkbox" id="si" value="Si" v-model="$store.state.chkSI"/> SI
+                </label>
+                <label for="nonsi">
+                    <input type="checkbox" id="nonsi" value="NonSi" v-model="$store.state.chkNonSI"/> Non-SI
+                </label>
+            </div>
+            <div class="button-group">
+                <button type="button" class="btn btn-primary" @click="updateQuery">
+                    <v-icon name="search" class="search-icon"/>&nbsp; Search
+                </button>
+                <button type="button" class="btn btn-primary" @click="clearFilters">
+                    <v-icon name="times" class="clear-icon"/>&nbsp;&nbsp;Clear filters
+                </button>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -69,6 +70,7 @@ export default {
     }
   }
 };
+
 </script>
 
 <style scoped>
@@ -139,4 +141,5 @@ label {
 #keyword_search {
   width: 214px;
 }
+
 </style>

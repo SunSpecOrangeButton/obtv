@@ -13,25 +13,25 @@
 -->
 
 <template>
-  <div class="concept-search-container">
-    <!-- <div class="breadcrumbs">
-      <router-link to="/" class="nav-link">Home Page</router-link>/
-      <router-link to="/" class="nav-link disabled">Concept Search</router-link>
-    </div>-->
-    <div class="download-search-results">
-      <a href>Download Search Results</a>
+    <div class="concept-search-container">
+        <!-- <div class="breadcrumbs">
+          <router-link to="/" class="nav-link">Home Page</router-link>/
+          <router-link to="/" class="nav-link disabled">Concept Search</router-link>
+        </div>-->
+        <div class="download-search-results">
+            <a href>Download Search Results</a>
+        </div>
+        <div class="concept-count">
+            <br/>
+            <strong>{{ returnItemsCount }} Concepts</strong>
+        </div>
+        <div class="concept-search-sidebar">
+            <component-concept-filter></component-concept-filter>
+        </div>
+        <div class="concept-search-body">
+            <component-concept-list></component-concept-list>
+        </div>
     </div>
-    <div class="concept-count">
-      <br />
-      <strong>{{ returnItemsCount }} Concepts</strong>
-    </div>
-    <div class="concept-search-sidebar">
-      <component-concept-filter></component-concept-filter>
-    </div>
-    <div class="concept-search-body">
-      <component-concept-list></component-concept-list>
-    </div>
-  </div>
 </template>
 
 
@@ -49,6 +49,7 @@ export default {
     }
   }
 };
+
 </script>
 
 
@@ -100,4 +101,5 @@ export default {
 a {
   color: #4285f4;
 }
+
 </style>

@@ -13,25 +13,25 @@
 -->
 
 <template>
-  <div class="unit-search-container">
-    <!-- <div class="breadcrumbs">
-      <router-link to="/" class="nav-link">Home Page</router-link>/
-      <router-link to="/" class="nav-link disabled">Unit Search</router-link>
-    </div>-->
-    <div class="download-search-results">
-      <a href>Download Search Results</a>
+    <div class="unit-search-container">
+        <!-- <div class="breadcrumbs">
+          <router-link to="/" class="nav-link">Home Page</router-link>/
+          <router-link to="/" class="nav-link disabled">Unit Search</router-link>
+        </div>-->
+        <div class="download-search-results">
+            <a href>Download Search Results</a>
+        </div>
+        <div class="unit-count">
+            <br/>
+            <strong>{{ returnItemsCount }} Units</strong>
+        </div>
+        <div class="unit-search-sidebar">
+            <component-unit-filter></component-unit-filter>
+        </div>
+        <div class="unit-search-body">
+            <component-unit-list></component-unit-list>
+        </div>
     </div>
-    <div class="unit-count">
-      <br />
-      <strong>{{ returnItemsCount }} Units</strong>
-    </div>
-    <div class="unit-search-sidebar">
-      <component-unit-filter></component-unit-filter>
-    </div>
-    <div class="unit-search-body">
-      <component-unit-list></component-unit-list>
-    </div>
-  </div>
 </template>
 
 
@@ -52,6 +52,7 @@ export default {
       this.message = 'bye!'
   }
 };
+
 </script>
 
 
@@ -103,4 +104,5 @@ export default {
 a {
   color: #4285f4;
 }
+
 </style>

@@ -13,41 +13,41 @@
 -->
 
 <template>
-  <nav class="navbar navbar-expand-md navbar-light navbar-custom">
-    <router-link to="entrypoints" class="navbar-brand">
-      <img id="oblogo" src="@/assets/ob.png" />
-      <h1 class="app-title">Orange Button Taxonomy Viewer</h1>
-    </router-link>
-    <ul class="navbar-nav ml-auto">
-      <!-- <li class="nav-item">
-        <router-link to="/" class="nav-link">Home</router-link>
-      </li>-->
+    <nav class="navbar navbar-expand-md navbar-light navbar-custom">
+        <router-link to="entrypoints" class="navbar-brand">
+            <img id="oblogo" src="@/assets/ob.png"/>
+            <h1 class="app-title">Orange Button Taxonomy Viewer</h1>
+        </router-link>
+        <ul class="navbar-nav ml-auto">
+            <!-- <li class="nav-item">
+              <router-link to="/" class="nav-link">Home</router-link>
+            </li>-->
 
-      <li class="nav-item">
-        <router-link :to="{ name: 'entrypoints' }" class="nav-link">Entrypoints</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link :to="{ name: 'concepts' }" class="nav-link">Concepts</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link :to="{ name: 'types' }" class="nav-link">Types</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link :to="{ name: 'units' }" class="nav-link">Units</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link :to="{ name: 'about' }" class="nav-link">About</router-link>
-      </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'entrypoints' }" class="nav-link">Entrypoints</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'concepts' }" class="nav-link">Concepts</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'types' }" class="nav-link">Types</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'units' }" class="nav-link">Units</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'about' }" class="nav-link">About</router-link>
+            </li>
 
-      <!-- <li class="nav-item">
-        <router-link to="/login" class="nav-link">Login</router-link>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href id="logout">Logout</a>
-      </li>-->
-    </ul>
-  </nav>
-</template>  
+            <!-- <li class="nav-item">
+              <router-link to="/login" class="nav-link">Login</router-link>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href id="logout">Logout</a>
+            </li>-->
+        </ul>
+    </nav>
+</template>
 
 <style scoped>
 .navbar-custom .navbar-brand:hover {
@@ -91,6 +91,7 @@ nav {
   text-transform: uppercase;
   margin-left: 5px;
 }
+
 </style>
 
 

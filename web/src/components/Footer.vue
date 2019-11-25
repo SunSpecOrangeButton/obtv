@@ -13,12 +13,12 @@
 -->
 
 <template>
-  <div class="footer">
-    <p class="privacy-notice">
-      <!-- Orange Button Taxonomy Viewer is Licensed under the Apache License, Version 2.0 -->
-      <br />
-    </p>
-  </div>
+    <div class="footer">
+        <p class="privacy-notice">
+            <!-- Orange Button Taxonomy Viewer is Licensed under the Apache License, Version 2.0 -->
+            <br/>
+        </p>
+    </div>
 </template>
 
 <script>
@@ -37,6 +37,7 @@
 p {
   text-align: center;
 }
+
 </style>
 
 

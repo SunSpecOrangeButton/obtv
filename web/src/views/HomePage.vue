@@ -13,7 +13,7 @@
 -->
 
 <template>
-  <h1>Orange Button Taxonomy Viewer Home Page</h1>
+    <h1>Orange Button Taxonomy Viewer Home Page</h1>
 </template>
 
 <script>

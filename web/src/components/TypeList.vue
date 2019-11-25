@@ -13,27 +13,27 @@
 -->
 
 <template>
-  <div class="type-public-list-container">
-    <div class="type-public-list">
-      <b-table
-        class="type-table"
-        striped
-        hover
-        outlined
-        small
-        :fields="fields"
-        :items="searchFilter"
-        :busy="apiLoading"
-      >
-        <template v-slot:table-busy>
-          <div class="text-center text-primary my-2">
-            <b-spinner class="align-middle"></b-spinner>
-            <strong>&nbsp; Loading...</strong>
-          </div>
-        </template>
-      </b-table>
+    <div class="type-public-list-container">
+        <div class="type-public-list">
+            <b-table
+                    class="type-table"
+                    striped
+                    hover
+                    outlined
+                    small
+                    :fields="fields"
+                    :items="searchFilter"
+                    :busy="apiLoading"
+            >
+                <template v-slot:table-busy>
+                    <div class="text-center text-primary my-2">
+                        <b-spinner class="align-middle"></b-spinner>
+                        <strong>&nbsp; Loading...</strong>
+                    </div>
+                </template>
+            </b-table>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -96,6 +96,7 @@ export default {
   components: {
   }
 };
+
 </script>
 
 <style>
@@ -236,4 +237,5 @@ a {
 .table {
   margin-bottom: 0px !important;
 }
+
 </style>

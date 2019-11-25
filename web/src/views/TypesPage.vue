@@ -13,25 +13,25 @@
 -->
 
 <template>
-  <div class="type-search-container">
-    <!-- <div class="breadcrumbs">
-      <router-link to="/" class="nav-link">Home Page</router-link>/
-      <router-link to="/" class="nav-link disabled">Type Search</router-link>
-    </div>-->
-    <div class="download-search-results">
-      <a href>Download Search Results</a>
+    <div class="type-search-container">
+        <!-- <div class="breadcrumbs">
+          <router-link to="/" class="nav-link">Home Page</router-link>/
+          <router-link to="/" class="nav-link disabled">Type Search</router-link>
+        </div>-->
+        <div class="download-search-results">
+            <a href>Download Search Results</a>
+        </div>
+        <div class="type-count">
+            <br/>
+            <strong>{{ returnItemsCount }} Types</strong>
+        </div>
+        <div class="type-search-sidebar">
+            <component-type-filter></component-type-filter>
+        </div>
+        <div class="type-search-body">
+            <component-type-list></component-type-list>
+        </div>
     </div>
-    <div class="type-count">
-      <br />
-      <strong>{{ returnItemsCount }} Types</strong>
-    </div>
-    <div class="type-search-sidebar">
-      <component-type-filter></component-type-filter>
-    </div>
-    <div class="type-search-body">
-      <component-type-list></component-type-list>
-    </div>
-  </div>
 </template>
 
 
@@ -50,6 +50,7 @@ export default {
 
   }
 };
+
 </script>
 
 
@@ -101,4 +102,5 @@ export default {
 a {
   color: #4285f4;
 }
+
 </style>

@@ -13,41 +13,41 @@
 -->
 
 <template>
-  <div class="public-filter">
-    <form @submit.prevent>
-      <h1>Keyword</h1>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          id="keyword_search"
-          v-model="$store.state.searchTerm"
-          @keyup.enter="updateQuery"
-        />
-      </div>
+    <div class="public-filter">
+        <form @submit.prevent>
+            <h1>Keyword</h1>
+            <div class="form-group">
+                <input
+                        type="text"
+                        class="form-control"
+                        id="keyword_search"
+                        v-model="$store.state.searchTerm"
+                        @keyup.enter="updateQuery"
+                />
+            </div>
 
-      <h1>Entrypoint Type</h1>
-      <div class="form-group">
-        <label for="data">
-          <input type="checkbox" id="data" value="Data" v-model="$store.state.chkDocuments" /> Data
-        </label>
-        <label for="documents">
-          <input type="checkbox" id="document" value="Documents" v-model="$store.state.chkData" /> Documents
-        </label>
-        <label for="process">
-          <input type="checkbox" id="Process" value="Process" v-model="$store.state.chkProcess" /> Process
-        </label>
-      </div>
-      <div class="button-group">
-        <button type="button" class="btn btn-primary" @click="updateQuery">
-          <v-icon name="search" class="search-icon" />&nbsp; Search
-        </button>
-        <button type="button" class="btn btn-primary" @click="clearFilters">
-          <v-icon name="times" class="clear-icon" />&nbsp;&nbsp;Clear filters
-        </button>
-      </div>
-    </form>
-  </div>
+            <h1>Entrypoint Type</h1>
+            <div class="form-group">
+                <label for="data">
+                    <input type="checkbox" id="data" value="Data" v-model="$store.state.chkDocuments"/> Data
+                </label>
+                <label for="documents">
+                    <input type="checkbox" id="document" value="Documents" v-model="$store.state.chkData"/> Documents
+                </label>
+                <label for="process">
+                    <input type="checkbox" id="Process" value="Process" v-model="$store.state.chkProcess"/> Process
+                </label>
+            </div>
+            <div class="button-group">
+                <button type="button" class="btn btn-primary" @click="updateQuery">
+                    <v-icon name="search" class="search-icon"/>&nbsp; Search
+                </button>
+                <button type="button" class="btn btn-primary" @click="clearFilters">
+                    <v-icon name="times" class="clear-icon"/>&nbsp;&nbsp;Clear filters
+                </button>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -65,6 +65,7 @@ export default {
     }
   }
 };
+
 </script>
 
 <style scoped>
@@ -135,4 +136,5 @@ label {
 #keyword_search {
   width: 214px;
 }
+
 </style>

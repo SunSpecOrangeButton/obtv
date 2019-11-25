@@ -13,25 +13,25 @@
 -->
 
 <template>
-  <div class="entrypoint-search-container">
-    <!-- <div class="breadcrumbs">
-      <router-link to="/" class="nav-link">Home Page</router-link>/
-      <router-link to="/" class="nav-link disabled">Entrypoint Search</router-link>
-    </div>-->
-    <div class="download-search-results">
-      <a href>Download Search Results</a>
+    <div class="entrypoint-search-container">
+        <!-- <div class="breadcrumbs">
+          <router-link to="/" class="nav-link">Home Page</router-link>/
+          <router-link to="/" class="nav-link disabled">Entrypoint Search</router-link>
+        </div>-->
+        <div class="download-search-results">
+            <a href>Download Search Results</a>
+        </div>
+        <div class="entrypoint-count">
+            <br/>
+            <strong>{{ returnItemsCount }} Entrypoints</strong>
+        </div>
+        <div class="entrypoint-search-sidebar">
+            <component-entrypoint-filter></component-entrypoint-filter>
+        </div>
+        <div class="entrypoint-search-body">
+            <component-entrypoint-list></component-entrypoint-list>
+        </div>
     </div>
-    <div class="entrypoint-count">
-      <br />
-      <strong>{{ returnItemsCount }} Entrypoints</strong>
-    </div>
-    <div class="entrypoint-search-sidebar">
-      <component-entrypoint-filter></component-entrypoint-filter>
-    </div>
-    <div class="entrypoint-search-body">
-      <component-entrypoint-list></component-entrypoint-list>
-    </div>
-  </div>
 </template>
 
 
@@ -49,6 +49,7 @@ export default {
     }
   }
 };
+
 </script>
 
 
@@ -100,4 +101,5 @@ export default {
 a {
   color: #4285f4;
 }
+
 </style>

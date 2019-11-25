@@ -13,11 +13,11 @@
 -->
 
 <template>
-  <div id="app">
-    <Navbar id="navbar"></Navbar>
-    <router-view id="router-v" />
-    <Footer id="footer"></Footer>
-  </div>
+    <div id="app">
+        <Navbar id="navbar"></Navbar>
+        <router-view id="router-v"/>
+        <Footer id="footer"></Footer>
+    </div>
 </template>
 
 <script>
@@ -29,6 +29,7 @@ export default {
     Footer
   }
 };
+
 </script>
 
 <style>
@@ -60,6 +61,7 @@ html {
 #navbar {
   grid-row: 1 / 2;
 }
+
 </style>
 
 

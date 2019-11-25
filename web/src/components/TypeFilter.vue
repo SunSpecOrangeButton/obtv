@@ -13,38 +13,39 @@
 -->
 
 <template>
-  <div class="public-filter">
-    <form @submit.prevent>
-      <h1>Keyword</h1>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          id="keyword_search"
-          v-model="search_string"
-          @keyup.enter="updateQuery"
-        />
-      </div>
+    <div class="public-filter">
+        <form @submit.prevent>
+            <h1>Keyword</h1>
+            <div class="form-group">
+                <input
+                        type="text"
+                        class="form-control"
+                        id="keyword_search"
+                        v-model="search_string"
+                        @keyup.enter="updateQuery"
+                />
+            </div>
 
-      <h1>Type Type</h1>
-      <div class="form-group">
-        <label for="nonnumeric">
-          <input type="checkbox" id="nonnumeric" value="NonNumeric" v-model="$store.state.chkNonnumeric" /> Non Numeric
-        </label>
-        <label for="numeric">
-          <input type="checkbox" id="numeric" value="Numeric" v-model="$store.state.chkNumeric" /> Numeric
-        </label>
-      </div>
-      <div class="button-group">
-        <button type="button" class="btn btn-primary" @click="updateQuery">
-          <v-icon name="search" class="search-icon" />&nbsp; Search
-        </button>
-        <button type="button" class="btn btn-primary" @click="clearFilters">
-          <v-icon name="times" class="clear-icon" />&nbsp;&nbsp;Clear filters
-        </button>
-      </div>
-    </form>
-  </div>
+            <h1>Type Type</h1>
+            <div class="form-group">
+                <label for="nonnumeric">
+                    <input type="checkbox" id="nonnumeric" value="NonNumeric" v-model="$store.state.chkNonnumeric"/> Non
+                    Numeric
+                </label>
+                <label for="numeric">
+                    <input type="checkbox" id="numeric" value="Numeric" v-model="$store.state.chkNumeric"/> Numeric
+                </label>
+            </div>
+            <div class="button-group">
+                <button type="button" class="btn btn-primary" @click="updateQuery">
+                    <v-icon name="search" class="search-icon"/>&nbsp; Search
+                </button>
+                <button type="button" class="btn btn-primary" @click="clearFilters">
+                    <v-icon name="times" class="clear-icon"/>&nbsp;&nbsp;Clear filters
+                </button>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -62,6 +63,7 @@ export default {
     }
   }
 };
+
 </script>
 
 <style scoped>
@@ -132,4 +134,5 @@ label {
 #keyword_search {
   width: 214px;
 }
+
 </style>
