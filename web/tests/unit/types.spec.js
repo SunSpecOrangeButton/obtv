@@ -17,27 +17,35 @@ import TypeFilter from "@/components/TypeFilter.vue"
 import TypeList from "@/components/TypeList.vue"
 import store from "@/store.js"
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
+const localVue = createLocalVue();
+localVue.use(Vuex);
+
+process.env.TEST_JSON = '[{"code": "sample", "type": "numeric"}]';
 
 describe('TypesPage', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(TypesPage, { store, localVue })
-    expect(wrapper.html()).toContain('Download Search Results')
-  })
+    const wrapper = shallowMount(TypesPage, { store, localVue });
+    expect(wrapper.html()).toContain('Download Search Results');
+  });
 
-})
+  it('sets the computed count correctly', () => {
+    const wrapper = shallowMount(TypesPage, {store, localVue});
+    wrapper.vm.$store.state.returnItemsCount = 10;
+    expect(wrapper.vm.returnItemsCount).toBe(10);
+  });
+
+});
 
 describe('TypeFilter', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(TypeFilter, {store, localVue})
-    expect(wrapper.html()).toContain('numeric')
-  })
+    const wrapper = shallowMount(TypeFilter, {store, localVue});
+    expect(wrapper.html()).toContain('numeric');
+  });
 
   it('clears all filters on clearFilters()', () => {
-    const wrapper = shallowMount(TypeFilter, {store, localVue})
+    const wrapper = shallowMount(TypeFilter, {store, localVue});
     wrapper.vm.clearFilters();
     let result = wrapper.vm.$store.state.chkNumeric || wrapper.vm.$store.state.chkNonNumeric ||
         wrapper.vm.search_string != "";
@@ -48,7 +56,7 @@ describe('TypeFilter', () => {
 describe('TypeList', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(TypeList, {store, localVue})
-    expect(wrapper.html()).toContain('type-public-list-container')
-  })
-})
+    const wrapper = shallowMount(TypeList, {store, localVue});
+    expect(wrapper.html()).toContain('type-public-list-container');
+  });
+});

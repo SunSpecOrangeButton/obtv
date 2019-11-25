@@ -18,38 +18,45 @@ import ConceptFilter from "@/components/ConceptFilter.vue"
 import ConceptList from "@/components/ConceptList.vue"
 import store from "@/store.js"
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
+const localVue = createLocalVue();
+localVue.use(Vuex);
+
+process.env.TEST_JSON =  '[{"name": "Curtailment", "taxonomy": "solar"}]';
 
 describe('ConceptsPage', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(ConceptsPage, { store, localVue })
-    expect(wrapper.html()).toContain('Download Search Results')
-  })
+    const wrapper = shallowMount(ConceptsPage, { store, localVue });
+    expect(wrapper.html()).toContain('Download Search Results');
+  });
 
-})
+  it('sets the computed count correctly', () => {
+    const wrapper = shallowMount(ConceptsPage, {store, localVue});
+    wrapper.vm.$store.state.returnItemsCount = 10;
+    expect(wrapper.vm.returnItemsCount).toBe(10);
+  });
+});
 
 describe('ConceptFilter', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(ConceptFilter, {store, localVue})
-    expect(wrapper.html()).toContain('US-Gaap')
-  })
+    const wrapper = shallowMount(ConceptFilter, {store, localVue});
+    expect(wrapper.html()).toContain('US-Gaap');
+  });
 
   it('clears all filters on clearFilters()', () => {
-    const wrapper = shallowMount(ConceptFilter, {store, localVue})
+    const wrapper = shallowMount(ConceptFilter, {store, localVue});
     wrapper.vm.clearFilters();
     let result = wrapper.vm.$store.state.chkSolar || wrapper.vm.$store.state.chkUSGaap ||
         wrapper.vm.$store.state.chkDEI || wrapper.vm.search_string != "";
     expect(result).toBe(false);
-  })
-})
+  });
+});
 
 describe('ConceptList', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(ConceptList, {store, localVue})
-    expect(wrapper.html()).toContain('concept-public-list-container')
-  })
-})
+    const wrapper = shallowMount(ConceptList, {store, localVue});
+    expect(wrapper.html()).toContain('concept-public-list-container');
+  });
+});

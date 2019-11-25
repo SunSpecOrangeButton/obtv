@@ -57,7 +57,7 @@ export default new Vuex.Store({
       state.dataReady = false;
       if (process.env.JEST_WORKER_ID == undefined) {
           // Skip call during jest unit tests.  Please note that this is not elegant (using Mocks correctly
-          // would be better) and hopefully impreovments can be applied later.
+          // would be better) and hopefully improvements can be applied later.
 
           axios
               .get(state.apiURL + payload + "/", {
@@ -68,6 +68,12 @@ export default new Vuex.Store({
                 state.returnItemsCount = response.data.length;
                 state.dataReady = true;
               });
+       } else {
+            var data = JSON.parse(process.env.TEST_JSON);
+            state.apiLoading = false;
+            state.apiData = data;
+            state.returnItemsCount = data.length;
+            state.dataReady = true;
        }
     },
     toggleAPILoading(state) {

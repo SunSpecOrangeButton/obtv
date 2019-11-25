@@ -23,5 +23,5 @@ import store from "@/store.js";
 describe('Main', () => {
   it('compiles ', () => {
     expect("cat").toMatch("cat")
-  })
-})
+  });
+});

@@ -16,36 +16,36 @@ import AboutPage from "@/views/AboutPage.vue";
 import Navbar from "@/components/Navbar.vue";
 import Footer from "@/components/Footer.vue";
 
-const localVue = createLocalVue()
+const localVue = createLocalVue();
 
 describe('HomePage', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(HomePage, { localVue })
-    expect(wrapper.html()).toContain('Orange Button Taxonomy Viewer Home Page')
-  })
-})
+    const wrapper = shallowMount(HomePage, { localVue });
+    expect(wrapper.html()).toContain('Orange Button Taxonomy Viewer Home Page');
+  });
+});
 
 describe('AboutPage', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(AboutPage, { localVue })
-    expect(wrapper.html()).toContain('Orange Button')
-  })
-})
+    const wrapper = shallowMount(AboutPage, { localVue });
+    expect(wrapper.html()).toContain('Orange Button');
+  });
+});
 
 describe('Navbar', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(Navbar, { localVue })
-    expect(wrapper.html()).toContain('Orange Button')
-  })
-})
+    const wrapper = shallowMount(Navbar, { localVue });
+    expect(wrapper.html()).toContain('Orange Button');
+  });
+});
 
 describe('Footer', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(Footer, { localVue })
-    expect(wrapper.html()).toContain('footer')
-  })
-})
+    const wrapper = shallowMount(Footer, { localVue });
+    expect(wrapper.html()).toContain('footer');
+  });
+});

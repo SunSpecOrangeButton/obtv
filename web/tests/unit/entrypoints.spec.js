@@ -17,38 +17,45 @@ import EntrypointFilter from "@/components/EntrypointFilter.vue"
 import EntrypointList from "@/components/EntrypointList.vue"
 import store from "@/store.js"
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
+const localVue = createLocalVue();
+localVue.use(Vuex);
+
+process.env.TEST_JSON = '[{"entrypoint": "Site", "type": "Data"}]';
 
 describe('EntrypointsPage', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(EntrypointsPage, { store, localVue })
-    expect(wrapper.html()).toContain('Download Search Results')
-  })
+    const wrapper = shallowMount(EntrypointsPage, { store, localVue });
+    expect(wrapper.html()).toContain('Download Search Results');
+  });
 
-})
+  it('sets the computed count correctly', () => {
+    const wrapper = shallowMount(EntrypointsPage, {store, localVue});
+    wrapper.vm.$store.state.returnItemsCount = 10;
+    expect(wrapper.vm.returnItemsCount).toBe(10);
+  });
+});
 
 describe('EntrypointFilter', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(EntrypointFilter, {store, localVue})
-    expect(wrapper.html()).toContain('Documents')
-  })
+    const wrapper = shallowMount(EntrypointFilter, {store, localVue});
+    expect(wrapper.html()).toContain('Documents');
+  });
 
   it('clears all filters on clear clearFilters()', () => {
-    const wrapper = shallowMount(EntrypointFilter, {store, localVue})
+    const wrapper = shallowMount(EntrypointFilter, {store, localVue});
     wrapper.vm.clearFilters();
     let result = wrapper.vm.$store.state.chkData || wrapper.vm.$store.state.chkDocuments ||
         wrapper.vm.$store.state.chkProcess || wrapper.vm.search_string != "";
     expect(result).toBe(false);
-  })
-})
+  });
+});
 
 describe('EntrypointList', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(EntrypointList, {store, localVue})
-    expect(wrapper.html()).toContain('entrypoint-public-list-container')
-  })
-})
+    const wrapper = shallowMount(EntrypointList, {store, localVue});
+    expect(wrapper.html()).toContain('entrypoint-public-list-container');
+  });
+});
