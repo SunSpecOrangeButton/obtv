@@ -20,7 +20,10 @@ import store from "@/store.js"
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-process.env.TEST_JSON = '[{"code": "sample", "type": "numeric"}]';
+process.env.TEST_JSON = `[
+    {"code": "fundStatus", "type": "Non numeric", "values": "Closed, Open, Committed"},
+    {"code": "force", "type": "Numeric", "values": "N/A"}
+]`;
 
 describe('TypesPage', () => {
 
@@ -50,8 +53,8 @@ describe('TypeFilter', () => {
     let result = wrapper.vm.$store.state.chkNumeric || wrapper.vm.$store.state.chkNonNumeric ||
         wrapper.vm.search_string != "";
     expect(result).toBe(false);
-   })
-})
+   });
+});
 
 describe('TypeList', () => {
 
@@ -59,4 +62,15 @@ describe('TypeList', () => {
     const wrapper = shallowMount(TypeList, {store, localVue});
     expect(wrapper.html()).toContain('type-public-list-container');
   });
+
+  it('loads the mock JSON correctly', () => {
+    const wrapper = shallowMount(TypeList, {store, localVue});
+    expect(wrapper.vm.$store.state.returnItemsCount).toBe(2);
+    expect(wrapper.vm.apiData[0]["code"]).toBe("fundStatus");
+    expect(wrapper.vm.apiData[1]["type"]).toBe("Numeric");
+    expect(wrapper.vm.apiData[0]["values"]).toBe("Closed, Open, Committed");
+    expect(wrapper.vm.apiLoading).toBe(false);
+    expect(wrapper.vm.dataReady).toBe(true);
+  });
+
 });

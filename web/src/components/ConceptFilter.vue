@@ -98,7 +98,7 @@ export default {
       this.$store.commit("toggleAPILoading");
       this.search_string = "";
       this.$store.commit("clearQueryString");
-      this.$store.commit("clearConceptsChks")
+      this.$store.commit("clearConceptsChks");
       this.$store.commit("callAPI", "concepts");
     },
     updateSearch() {

@@ -20,7 +20,10 @@ import store from "@/store.js"
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-process.env.TEST_JSON = '[{"id": "sample", "standard": "customary"}]';
+process.env.TEST_JSON = `[
+    {"id": "acre", "name": "Acre", "symbol": "a", "type": "area", "standard": "Customary", "definition": "Acre"},
+    {"id": "J", "name": "Joule", "symbol": "J", "type": "energy", "standard": "SI", "definition": "Joule"}
+]`;
 
 describe('UnitsPage', () => {
 
@@ -58,5 +61,18 @@ describe('UnitList', () => {
   it('renders a correct markup clip', () => {
     const wrapper = shallowMount(UnitList, {store, localVue});
     expect(wrapper.html()).toContain('unit-public-list-container');
+  });
+
+  it('loads the mock JSON correctly', () => {
+    const wrapper = shallowMount(UnitList, {store, localVue});
+    expect(wrapper.vm.$store.state.returnItemsCount).toBe(2);
+    expect(wrapper.vm.apiData[0]["id"]).toBe("acre");
+    expect(wrapper.vm.apiData[0]["name"]).toBe("Acre");
+    expect(wrapper.vm.apiData[0]["symbol"]).toBe("a");
+    expect(wrapper.vm.apiData[1]["type"]).toBe("energy");
+    expect(wrapper.vm.apiData[1]["standard"]).toBe("SI");
+    expect(wrapper.vm.apiData[1]["definition"]).toBe("Joule");
+    expect(wrapper.vm.apiLoading).toBe(false);
+    expect(wrapper.vm.dataReady).toBe(true);
   });
 });

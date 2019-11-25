@@ -20,7 +20,10 @@ import store from "@/store.js"
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-process.env.TEST_JSON = '[{"entrypoint": "Site", "type": "Data"}]';
+process.env.TEST_JSON = `[
+    {"entrypoint": "Site", "type": "Data", "description": "Information about the site."},
+    {"entrypoint": "FinancialPerformance", "type": "Document", "description": "Information about the forecast and actual performance of the project."}
+]`;
 
 describe('EntrypointsPage', () => {
 
@@ -57,5 +60,14 @@ describe('EntrypointList', () => {
   it('renders a correct markup clip', () => {
     const wrapper = shallowMount(EntrypointList, {store, localVue});
     expect(wrapper.html()).toContain('entrypoint-public-list-container');
+  });
+
+  it('loads the mock JSON correctly', () => {
+    const wrapper = shallowMount(EntrypointList, {store, localVue});
+    expect(wrapper.vm.$store.state.returnItemsCount).toBe(2);
+    expect(wrapper.vm.apiData[0]["entrypoint"]).toBe("Site");
+    expect(wrapper.vm.apiData[1]["description"]).toBe("Information about the forecast and actual performance of the project.");
+    expect(wrapper.vm.apiLoading).toBe(false);
+    expect(wrapper.vm.dataReady).toBe(true);
   });
 });

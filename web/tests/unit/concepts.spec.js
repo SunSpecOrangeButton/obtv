@@ -21,7 +21,10 @@ import store from "@/store.js"
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-process.env.TEST_JSON =  '[{"name": "Curtailment", "taxonomy": "solar"}]';
+process.env.TEST_JSON =  `[
+    {"name": "Curtailment", "taxonomy": "SOLAR", "datatype": "energy", "period": "duration"},
+    {"name": "AccruedLiabilitiesCurrent", "taxonomy": "US-GAAP", "datatype": "monetary", "period": "instant"}
+]`;
 
 describe('ConceptsPage', () => {
 
@@ -58,5 +61,17 @@ describe('ConceptList', () => {
   it('renders a correct markup clip', () => {
     const wrapper = shallowMount(ConceptList, {store, localVue});
     expect(wrapper.html()).toContain('concept-public-list-container');
+  });
+
+  it('loads the mock JSON correctly', () => {
+    const wrapper = shallowMount(ConceptList, {store, localVue});
+    let state = wrapper.vm.$store.state;
+    expect(wrapper.vm.$store.state.returnItemsCount).toBe(2);
+    expect(wrapper.vm.apiData[0]["name"]).toBe("Curtailment");
+    expect(wrapper.vm.apiData[0]["taxonomy"]).toBe("SOLAR");
+    expect(wrapper.vm.apiData[1]["datatype"]).toBe("monetary");
+    expect(wrapper.vm.apiData[1]["period"]).toBe("instant");
+    expect(wrapper.vm.apiLoading).toBe(false);
+    expect(wrapper.vm.dataReady).toBe(true);
   });
 });

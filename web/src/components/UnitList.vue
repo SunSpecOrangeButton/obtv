@@ -95,8 +95,6 @@ export default {
     },
      searchFilter() {
 
-       //return this.$store.state.apiData;
-
        return this.$store.state.apiData.filter( node => {
 
             return node.id.toLowerCase().includes(this.$store.state.searchTerm.toLowerCase()) &&
