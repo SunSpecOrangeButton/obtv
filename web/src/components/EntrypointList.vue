@@ -82,9 +82,6 @@ export default {
       return this.$store.state.dataReady;
     },
     searchFilter() {
-
-      //return this.$store.state.apiData;
-
       return this.$store.state.apiData.filter( node => {
           return node.entrypoint.toLowerCase().includes(this.$store.state.searchTerm.toLowerCase()) &&
             ((node.type.toLowerCase()=="data" && this.$store.state.chkDocuments) ||

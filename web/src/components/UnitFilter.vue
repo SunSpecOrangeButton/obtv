@@ -55,47 +55,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      query_data: {
-        UnitType: [],
-        UnitRegion: [],
-        UnitCertificationType: []
-      },
-      search_string: ""
-    };
-  },
   methods: {
     updateQuery() {
-      this.$store.commit("toggleAPILoading");
-      // console.log(this.query_data);
-      let query_search_string = "";
-      if (this.search_string) {
-        query_search_string = "search=" + this.search_string;
-      }
-
-      let query_string = "?";
-      Object.keys(this.query_data).forEach(key => {
-        if (this.query_data[key].length != 0) {
-          if (query_string == "?") {
-            query_string += key + "__in=";
-          } else {
-            query_string += "&" + key + "__in=";
-          }
-          for (let i in this.query_data[key]) {
-            query_string += this.query_data[key][i] + ",";
-          }
-          query_string = query_string.slice(0, -1);
-        }
-      });
-
-      if (query_string == "?") {
-        query_string = query_string + query_search_string;
-      } else {
-        query_string = query_string + "&" + query_search_string;
-      }
-      // console.log(query_string);
-      this.$store.commit("callAPI", query_string);
+       // TODO: Remove - currently referenced in other code.
     },
     clearFilters() {
       this.$store.commit("toggleAPILoading");
@@ -104,13 +66,6 @@ export default {
       this.$store.commit("clearUnitsChks")
       this.$store.commit("callAPI", "units");
       this.$store.commit("updateCurrentPage", 1);
-    },
-    updateSearch() {
-      this.$store.commit("toggleAPILoading");
-
-      let query_search_string = "?search=" + this.search_string;
-      // console.log(query_search_string);
-      this.$store.commit("callAPI", query_search_string);
     }
   }
 };

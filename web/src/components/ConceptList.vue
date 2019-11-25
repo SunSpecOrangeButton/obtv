@@ -89,9 +89,6 @@ export default {
       return this.$store.state.dataReady;
     },
     searchFilter() {
-
-      //return this.$store.state.apiData;
-
       return this.$store.state.apiData.filter( node => {
           return node.name.toLowerCase().includes(this.$store.state.searchTerm.toLowerCase()) &&
             ((node.taxonomy.toLowerCase()=="solar" && this.$store.state.chkSolar) ||
