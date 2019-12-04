@@ -36,6 +36,9 @@
                 <router-link :to="{ name: 'units' }" class="nav-link">Units</router-link>
             </li>
             <li class="nav-item">
+                <router-link :to="{ name: 'references' }" class="nav-link">References</router-link>
+            </li>
+            <li class="nav-item">
                 <router-link :to="{ name: 'about' }" class="nav-link">About</router-link>
             </li>
 

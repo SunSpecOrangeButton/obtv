@@ -19,6 +19,7 @@ import EntrypointsPage from "./views/EntrypointsPage.vue";
 import Login from "./views/Login";
 import TypesPage from "./views/TypesPage.vue";
 import UnitsPage from "./views/UnitsPage";
+import ReferencesPage from "./views/ReferencesPage";
 
 Vue.use(Router);
 
@@ -49,6 +50,11 @@ export default new Router({
        path: "/units",
        name: "units",
        component: UnitsPage
+     },
+     {
+       path: "/references",
+       name: "references",
+       component: ReferencesPage
      },
      {
        path: "/about",

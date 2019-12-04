@@ -26,14 +26,13 @@
                 />
             </div>
 
-            <h1>Type Type</h1>
+            <h1>References Type</h1>
             <div class="form-group">
-                <label for="nonnumeric">
-                    <input type="checkbox" id="nonnumeric" value="NonNumeric" v-model="$store.state.chkNonnumeric"/> Non
-                    Numeric
+                <label for="acronym">
+                    <input type="checkbox" id="acronym" value="Acronym" v-model="$store.state.chkAcronym"/> Acronym
                 </label>
-                <label for="numeric">
-                    <input type="checkbox" id="numeric" value="Numeric" v-model="$store.state.chkNumeric"/> Numeric
+                <label for="abbreviation">
+                    <input type="checkbox" id="abbreviation" value="Abbreviation" v-model="$store.state.chkAbbreviation"/> Abbreviation
                 </label>
             </div>
             <div class="button-group">
@@ -58,8 +57,8 @@ export default {
       this.$store.commit("toggleAPILoading");
       this.search_string = "";
       this.$store.commit("clearQueryString");
-      this.$store.commit("clearTypesChks")
-      this.$store.commit("callAPI", "types");
+      this.$store.commit("clearReferencesChks")
+      this.$store.commit("callAPI", "references");
     }
   }
 };

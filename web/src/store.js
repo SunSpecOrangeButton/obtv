@@ -41,7 +41,10 @@ export default new Vuex.Store({
     chkCustomary: true,
     chkISO4217: true,
     chkSI: true,
-    chkNonSI: true
+    chkNonSI: true,
+
+    chkAcronym: true,
+    chkAbbreviation: true
   },
   getters: {
     apiData: state => state.apiData
@@ -104,7 +107,10 @@ export default new Vuex.Store({
       state.chkISO4217 = false;
       state.chkSI = false;
       state.chkNonSI = false;
+    },
+    clearReferencesChks(state) {
+      state.chkAcronym = false;
+      state.chkAbbreviation = false;
     }
-
   }
 });

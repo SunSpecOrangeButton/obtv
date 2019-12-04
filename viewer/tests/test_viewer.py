@@ -48,3 +48,10 @@ class TestViewer(unittest.TestCase):
         self.assertTrue("type" in data[0])
         self.assertTrue("standard" in data[0])
         self.assertTrue("definition" in data[0])
+
+    def test_references(self):
+        data = json.loads(viewer.references())
+        self.assertEqual(305, len(data))
+        self.assertTrue("type" in data[0])
+        self.assertTrue("code" in data[0])
+        self.assertTrue("definition" in data[0])
