@@ -20,6 +20,8 @@ Use the following comand to start the Viewer.
     $ FLASK_APP=viewer.py flask run
 """
 
+import reference as ref
+
 import json
 from oblib import taxonomy, data_model, parser
 from flask import Flask, request, render_template
@@ -169,6 +171,34 @@ def entrypoints():
             })
         s = json.dumps(data)
         # s = json.dumps(tax.semantic.get_all_entrypoints())
+        return s
+    except Exception as e:
+        print(e)
+        return "Error occurred - try again"
+
+@app.route('/reference/', methods=['GET'])
+def reference():
+    """Flask Read Handler for types API Endpoint"""
+
+    print("Reference endpoint")
+
+    try:
+        data = []
+        for item in ref.ACRONYMS.items():
+            data.append({
+                "type": "Acronym",
+                "code": item[1],
+                "definition": item[0]
+            })
+
+        for item in ref.ABBREVIATIONS.items():
+            data.append({
+                "type": "Abbreviation",
+                "code": item[1],
+                "definition": item[0]
+            })
+
+        s = json.dumps(data)
         return s
     except Exception as e:
         print(e)
