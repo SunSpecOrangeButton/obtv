@@ -1,3 +1,4 @@
 oblib
 flask
 flask_cors
+pytest
