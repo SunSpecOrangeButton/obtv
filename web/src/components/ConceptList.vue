@@ -101,6 +101,8 @@ export default {
              (node.taxonomy.toLowerCase()=="us-gaap" && this.$store.state.chkUSGaap) ||
              (node.taxonomy.toLowerCase()=="dei" && this.$store.state.chkDEI))
       });
+      this.numOfElem = 100
+      this.showLoadMore = true
       this.filteredCount = tableData.length;
       return tableData;
     }
@@ -115,10 +117,6 @@ export default {
     }
   },
   watch: {
-    "$store.state.searchTerm"() {
-      this.numOfElem = 100
-      this.showLoadMore = true
-    },
     filteredCount() {
       if (this.numOfElem >= this.filteredCount) {
         this.showLoadMore = false

@@ -107,6 +107,8 @@ export default {
                (node.standard.toLowerCase()=="si" && this.$store.state.chkSI) ||
                (node.standard.toLowerCase()=="non-si" && this.$store.state.chkNonSI))
        })
+      this.numOfElem = 100
+      this.showLoadMore = true
       this.filteredCount = tableData.length;
       return tableData;
     }
@@ -121,10 +123,6 @@ export default {
     }
   },
   watch: {
-    "$store.state.searchTerm"() {
-      this.numOfElem = 100
-      this.showLoadMore = true
-    },
     filteredCount() {
       if (this.numOfElem >= this.filteredCount) {
         this.showLoadMore = false

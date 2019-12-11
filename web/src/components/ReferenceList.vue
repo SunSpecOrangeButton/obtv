@@ -89,6 +89,8 @@ export default {
             ((node.type.toLowerCase()=="acronym" && this.$store.state.chkAcronym) ||
              (node.type.toLowerCase()=="abbreviation" && this.$store.state.chkAbbreviation))
       });
+      this.numOfElem = 100
+      this.showLoadMore = true
       this.filteredCount = tableData.length;
       return tableData;
     }
@@ -103,10 +105,6 @@ export default {
     }
   },
   watch: {
-    "$store.state.searchTerm"() {
-      this.numOfElem = 100
-      this.showLoadMore = true
-    },
     filteredCount() {
       if (this.numOfElem >= this.filteredCount) {
         this.showLoadMore = false

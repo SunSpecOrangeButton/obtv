@@ -94,6 +94,8 @@ export default {
             ((node.type.toLowerCase()=="non numeric" && this.$store.state.chkNonnumeric) ||
              (node.type.toLowerCase()=="numeric" && this.$store.state.chkNumeric))
       })
+      this.numOfElem = 100
+      this.showLoadMore = true
       this.filteredCount = tableData.length;
       return tableData;
     }
@@ -108,10 +110,6 @@ export default {
     }
   },
   watch: {
-    "$store.state.searchTerm"() {
-      this.numOfElem = 100
-      this.showLoadMore = true
-    },
     filteredCount() {
       if (this.numOfElem >= this.filteredCount) {
         this.showLoadMore = false
