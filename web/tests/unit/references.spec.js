@@ -66,11 +66,11 @@ describe('ReferenceList', () => {
   it('loads the mock JSON correctly', () => {
     const wrapper = shallowMount(ReferenceList, {store, localVue});
     expect(wrapper.vm.$store.state.returnItemsCount).toBe(2);
-    expect(wrapper.vm.apiData[0]["type"]).toBe("Acronym");
-    expect(wrapper.vm.apiData[0]["code"]).toBe("PPA");
-    expect(wrapper.vm.apiData[1]["definition"]).toBe("Qualifications");
-    expect(wrapper.vm.apiLoading).toBe(false);
-    expect(wrapper.vm.dataReady).toBe(true);
+    expect(wrapper.vm.$store.state.apiData[0]["type"]).toBe("Acronym");
+    expect(wrapper.vm.$store.state.apiData[0]["code"]).toBe("PPA");
+    expect(wrapper.vm.$store.state.apiData[1]["definition"]).toBe("Qualifications");
+    expect(wrapper.vm.$store.state.apiLoading).toBe(false);
+    expect(wrapper.vm.$store.state.dataReady).toBe(true);
   });
 
 });

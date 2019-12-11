@@ -66,13 +66,13 @@ describe('UnitList', () => {
   it('loads the mock JSON correctly', () => {
     const wrapper = shallowMount(UnitList, {store, localVue});
     expect(wrapper.vm.$store.state.returnItemsCount).toBe(2);
-    expect(wrapper.vm.apiData[0]["id"]).toBe("acre");
-    expect(wrapper.vm.apiData[0]["name"]).toBe("Acre");
-    expect(wrapper.vm.apiData[0]["symbol"]).toBe("a");
-    expect(wrapper.vm.apiData[1]["type"]).toBe("energy");
-    expect(wrapper.vm.apiData[1]["standard"]).toBe("SI");
-    expect(wrapper.vm.apiData[1]["definition"]).toBe("Joule");
-    expect(wrapper.vm.apiLoading).toBe(false);
-    expect(wrapper.vm.dataReady).toBe(true);
+    expect(wrapper.vm.$store.state.apiData[0]["id"]).toBe("acre");
+    expect(wrapper.vm.$store.state.apiData[0]["name"]).toBe("Acre");
+    expect(wrapper.vm.$store.state.apiData[0]["symbol"]).toBe("a");
+    expect(wrapper.vm.$store.state.apiData[1]["type"]).toBe("energy");
+    expect(wrapper.vm.$store.state.apiData[1]["standard"]).toBe("SI");
+    expect(wrapper.vm.$store.state.apiData[1]["definition"]).toBe("Joule");
+    expect(wrapper.vm.$store.state.apiLoading).toBe(false);
+    expect(wrapper.vm.$store.state.dataReady).toBe(true);
   });
 });
