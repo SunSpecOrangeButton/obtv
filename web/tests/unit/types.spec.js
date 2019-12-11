@@ -10,7 +10,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import { shallowMount, createLocalVue, mount } from '@vue/test-utils'
+import { shallowMount, createLocalVue} from '@vue/test-utils'
 import Vuex from 'vuex'
 import TypesPage from "@/views/TypesPage.vue";
 import TypeFilter from "@/components/TypeFilter.vue"
