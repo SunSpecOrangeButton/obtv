@@ -27,6 +27,10 @@ export default new Vuex.Store({
     queryString: "",
     searchTerm: "",
 
+    apiDetailData: {},
+    apiDetailLoading: false,
+    apiDetailDataReady: false,
+
     chkDocuments: true,
     chkData: true,
     chkProcess: true,
@@ -44,10 +48,13 @@ export default new Vuex.Store({
     chkNonSI: true,
 
     chkAcronym: true,
-    chkAbbreviation: true
+    chkAbbreviation: true,
+
+    conceptDetail: "NONE"
   },
   getters: {
-    apiData: state => state.apiData
+    apiData: state => state.apiData,
+    apiDetailData: state => state.apiDetailData
   },
   mutations: {
     callAPI(state, payload) {
@@ -79,6 +86,33 @@ export default new Vuex.Store({
             state.dataReady = true;
        }
     },
+    callAPIdetail(state, payload) {
+
+      // Note: its very important to clear data so that views don't update with data from another page
+      // before API call completes.
+      state.apiDetailLoading = true;
+      state.apiDetailData = {};
+      state.detailDataReady = false;
+      if (process.env.JEST_WORKER_ID == undefined) {
+          // Skip call during jest unit tests.  Please note that this is not elegant (using Mocks correctly
+          // would be better) and hopefully improvements can be applied later.
+
+          axios
+              .get(state.apiURL + payload[0] + "/" + payload[1] + "/" + payload[2], {
+              })
+              .then(response => {
+                state.apiDetailLoading = false;
+                state.apiDetailData = response.data;
+                state.dataReady = true;
+              });
+       } else {
+            var data = JSON.parse(process.env.TEST_JSON);
+            state.apiDetailLoading = false;
+            state.apiDetailData = data;
+            state.dataReady = true;
+       }
+    },
+
     toggleAPILoading(state) {
       state.apiLoading = !state.apiLoading;
     },

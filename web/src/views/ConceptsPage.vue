@@ -31,6 +31,9 @@
         <div class="concept-search-body">
             <component-concept-list></component-concept-list>
         </div>
+        <div class="concept-detail-sidebar">
+            <component-concept-detail></component-concept-detail>
+        </div>
     </div>
 </template>
 
@@ -38,10 +41,12 @@
 <script>
 import ConceptFilter from "../components/ConceptFilter.vue";
 import ConceptList from "../components/ConceptList.vue";
+import ConceptDetail from "../components/ConceptDetail.vue";
 export default {
   components: {
     "component-concept-list": ConceptList,
-    "component-concept-filter": ConceptFilter
+    "component-concept-filter": ConceptFilter,
+    "component-concept-detail": ConceptDetail
   },
   computed: {
     returnItemsCount() {
@@ -69,6 +74,11 @@ export default {
 .concept-search-body {
   grid-column: 4 / span 2;
   grid-row: 1 / span 2;
+}
+
+.concept-detail-sidebar {
+  grid-column: 6 / span 2;
+  grid-row: 2 / 3;
 }
 
 .breadcrumbs {
