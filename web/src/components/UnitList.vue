@@ -22,7 +22,7 @@
                     outlined
                     small
                     :fields="fields"
-                    :items="searchFilter"
+                    :items="apiData"
                     :busy="apiLoading"
             >
                 <template v-slot:table-busy>
@@ -32,6 +32,9 @@
                     </div>
                 </template>
             </b-table>
+            <div class="load-more-btn-container" v-if="!apiLoading">
+              <b-button variant="primary" @click="loadMore" v-if="showLoadMore">Load more</b-button>
+            </div>
         </div>
     </div>
 </template>
@@ -77,7 +80,10 @@ export default {
           label: "Definition",
           thClass: ".col-field-styling"
         }
-      ]
+      ],
+      numOfElem: 100,
+      showLoadMore: true,
+      filteredCount: 0
     };
   },
   beforeCreate() {
@@ -85,7 +91,7 @@ export default {
   },
   computed: {
     apiData() {
-      return this.$store.state.apiData;
+      return this.searchFilter.slice(0, this.numOfElem);
     },
     apiLoading() {
       return this.$store.state.apiLoading;
@@ -94,19 +100,39 @@ export default {
       return this.$store.state.dataReady;
     },
     searchFilter() {
-       return this.$store.state.apiData.filter( node => {
-
+      let tableData = this.$store.state.apiData.filter( node => {
             return node.id.toLowerCase().includes(this.$store.state.searchTerm.toLowerCase()) &&
               ((node.standard.toLowerCase()=="customary" && this.$store.state.chkCustomary) ||
                (node.standard.toLowerCase()=="iso4217" && this.$store.state.chkISO4217) ||
                (node.standard.toLowerCase()=="si" && this.$store.state.chkSI) ||
                (node.standard.toLowerCase()=="non-si" && this.$store.state.chkNonSI))
        })
+      this.numOfElem = 100
+      this.showLoadMore = true
+      this.filteredCount = tableData.length;
+      return tableData;
     }
   },
   methods: {
+    loadMore() {
+      this.numOfElem += 100;
+      if (this.numOfElem >= this.$store.state.returnItemsCount
+          || this.numOfElem >= this.filteredCount) {
+        this.showLoadMore = false
+      }
+    }
   },
-  components: {
+  watch: {
+    filteredCount() {
+      if (this.numOfElem >= this.filteredCount) {
+        this.showLoadMore = false
+      }
+    },
+    "$store.state.returnItemsCount"() {
+      if (this.numOfElem >= this.$store.state.returnItemsCount) {
+        this.showLoadMore = false
+      }
+    }
   }
 };
 
@@ -249,6 +275,12 @@ a {
 
 .table {
   margin-bottom: 0px !important;
+}
+
+.load-more-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 </style>

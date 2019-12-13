@@ -10,12 +10,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue} from '@vue/test-utils'
 import Vuex from 'vuex'
 import TypesPage from "@/views/TypesPage.vue";
 import TypeFilter from "@/components/TypeFilter.vue"
 import TypeList from "@/components/TypeList.vue"
 import store from "@/store.js"
+
+// import BootstrapVue from "node_modules/bootstrap-vue";
+// import Icon from "node_modules/vue-awesome/components/Icon";
+// Vue.component("v-icon", Icon);
+// Vue.use(BootstrapVue);
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -66,11 +71,11 @@ describe('TypeList', () => {
   it('loads the mock JSON correctly', () => {
     const wrapper = shallowMount(TypeList, {store, localVue});
     expect(wrapper.vm.$store.state.returnItemsCount).toBe(2);
-    expect(wrapper.vm.apiData[0]["code"]).toBe("fundStatus");
-    expect(wrapper.vm.apiData[1]["type"]).toBe("Numeric");
-    expect(wrapper.vm.apiData[0]["values"]).toBe("Closed, Open, Committed");
-    expect(wrapper.vm.apiLoading).toBe(false);
-    expect(wrapper.vm.dataReady).toBe(true);
+    expect(wrapper.vm.$store.state.apiData[0]["code"]).toBe("fundStatus");
+    expect(wrapper.vm.$store.state.apiData[1]["type"]).toBe("Numeric");
+    expect(wrapper.vm.$store.state.apiData[0]["values"]).toBe("Closed, Open, Committed");
+    expect(wrapper.vm.$store.state.apiLoading).toBe(false);
+    expect(wrapper.vm.$store.state.dataReady).toBe(true);
   });
 
 });
