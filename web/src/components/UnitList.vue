@@ -110,6 +110,7 @@ export default {
       this.numOfElem = 100
       this.showLoadMore = true
       this.filteredCount = tableData.length;
+      this.$store.state.returnItemsCount = this.filteredCount;
       return tableData;
     }
   },
