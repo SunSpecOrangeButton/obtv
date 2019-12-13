@@ -29,10 +29,10 @@
             <h1>Entrypoint Type</h1>
             <div class="form-group">
                 <label for="data">
-                    <input type="checkbox" id="data" value="Data" v-model="$store.state.chkDocuments"/> Data
+                    <input type="checkbox" id="data" value="Data" v-model="$store.state.chkData"/> Data
                 </label>
                 <label for="documents">
-                    <input type="checkbox" id="document" value="Documents" v-model="$store.state.chkData"/> Documents
+                    <input type="checkbox" id="document" value="Documents" v-model="$store.state.chkDocuments"/> Documents
                 </label>
                 <label for="process">
                     <input type="checkbox" id="Process" value="Process" v-model="$store.state.chkProcess"/> Process
@@ -58,7 +58,7 @@ export default {
     },
     clearFilters() {
       this.$store.commit("toggleAPILoading");
-      this.search_string = "";
+      this.$store.state.searchTerm = "";
       this.$store.commit("clearQueryString");
       this.$store.commit("clearEntrypointsChks")
       this.$store.commit("callAPI", "entrypoints");

@@ -27,24 +27,26 @@ export default new Vuex.Store({
     queryString: "",
     searchTerm: "",
 
-    chkDocuments: true,
-    chkData: true,
-    chkProcess: true,
+    actvChk: false,
 
-    chkSolar: true,
-    chkUSGaap: true,
-    chkDEI: true,
+    chkDocuments: false,
+    chkData: false,
+    chkProcess: false,
 
-    chkNonnumeric: true,
-    chkNumeric: true,
+    chkSolar: false,
+    chkUSGaap: false,
+    chkDEI: false,
 
-    chkCustomary: true,
-    chkISO4217: true,
-    chkSI: true,
-    chkNonSI: true,
+    chkNonnumeric: false,
+    chkNumeric: false,
 
-    chkAcronym: true,
-    chkAbbreviation: true
+    chkCustomary: false,
+    chkISO4217: false,
+    chkSI: false,
+    chkNonSI: false,
+
+    chkAcronym: false,
+    chkAbbreviation: false
   },
   getters: {
     apiData: state => state.apiData
