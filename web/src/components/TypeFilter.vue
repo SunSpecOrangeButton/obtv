@@ -56,7 +56,7 @@ export default {
     },
     clearFilters() {
       this.$store.commit("toggleAPILoading");
-      this.search_string = "";
+      this.$store.state.searchTerm = "";
       this.$store.commit("clearQueryString");
       this.$store.commit("clearTypesChks")
       this.$store.commit("callAPI", "types");

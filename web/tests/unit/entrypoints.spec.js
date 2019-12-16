@@ -50,7 +50,7 @@ describe('EntrypointFilter', () => {
     const wrapper = shallowMount(EntrypointFilter, {store, localVue});
     wrapper.vm.clearFilters();
     let result = wrapper.vm.$store.state.chkData || wrapper.vm.$store.state.chkDocuments ||
-        wrapper.vm.$store.state.chkProcess || wrapper.vm.search_string != "";
+        wrapper.vm.$store.state.chkProcess || wrapper.vm.$store.state.searchTerm != "";
     expect(result).toBe(false);
   });
 });

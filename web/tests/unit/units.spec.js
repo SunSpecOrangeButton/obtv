@@ -51,7 +51,7 @@ describe('UnitFilter', () => {
     wrapper.vm.clearFilters();
     let result = wrapper.vm.$store.state.chkCustomary || wrapper.vm.$store.state.chkISO4217 ||
         wrapper.vm.$store.state.chkSI || wrapper.vm.$store.state.chkNonSI ||
-        wrapper.vm.search_string != "";
+        wrapper.vm.$store.state.searchTerm != "";
     expect(result).toBe(false);
   });
 });

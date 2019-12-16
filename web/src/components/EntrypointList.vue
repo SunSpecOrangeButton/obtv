@@ -73,6 +73,8 @@ export default {
     };
   },
   beforeCreate() {
+    this.$store.state.actvChk = false;
+    this.$store.state.searchTerm = "";
     this.$store.commit("callAPI", "entrypoints");
   },
   computed: {
@@ -90,13 +92,17 @@ export default {
     searchFilter() {
       let tableData = this.$store.state.apiData.filter( node => {
           return node.entrypoint.toLowerCase().includes(this.$store.state.searchTerm.toLowerCase()) &&
-            ((node.type.toLowerCase()=="data" && this.$store.state.chkDocuments) ||
-             (node.type.toLowerCase()=="document" && this.$store.state.chkData) ||
-             (node.type.toLowerCase()=="process" && this.$store.state.chkProcess))
-       });
+            ((node.type.toLowerCase()=="data" && this.$store.state.chkData) ||
+             (node.type.toLowerCase()=="document" && this.$store.state.chkDocuments) ||
+             (node.type.toLowerCase()=="process" && this.$store.state.chkProcess) ||
+             (node.type.toLowerCase()=="data" && !this.$store.state.actvChk) ||
+             (node.type.toLowerCase()=="document" && !this.$store.state.actvChk) ||
+             (node.type.toLowerCase()=="process" && !this.$store.state.actvChk))
+      });
       this.numOfElem = 100
       this.showLoadMore = true
       this.filteredCount = tableData.length;
+      this.$store.state.returnItemsCount = this.filteredCount;
       return tableData;
     }
 
@@ -119,6 +125,27 @@ export default {
     "$store.state.returnItemsCount"() {
       if (this.numOfElem >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      }
+    },
+    "$store.state.chkDocuments"() {
+      if (this.$store.state.chkDocuments) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
+      }
+    },
+    "$store.state.chkData"() {
+      if (this.$store.state.chkData) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
+      }
+    },
+    "$store.state.chkProcess"() {
+      if (this.$store.state.chkProcess) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
       }
     }
   }

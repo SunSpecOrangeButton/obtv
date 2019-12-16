@@ -56,7 +56,7 @@ describe('TypeFilter', () => {
     const wrapper = shallowMount(TypeFilter, {store, localVue});
     wrapper.vm.clearFilters();
     let result = wrapper.vm.$store.state.chkNumeric || wrapper.vm.$store.state.chkNonNumeric ||
-        wrapper.vm.search_string != "";
+        wrapper.vm.$store.state.searchTerm != "";
     expect(result).toBe(false);
    });
 });

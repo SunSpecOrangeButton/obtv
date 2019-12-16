@@ -62,11 +62,10 @@ export default {
     },
     clearFilters() {
       this.$store.commit("toggleAPILoading");
-      this.search_string = "";
+      this.$store.state.searchTerm = "";
       this.$store.commit("clearQueryString");
       this.$store.commit("clearUnitsChks")
       this.$store.commit("callAPI", "units");
-      this.$store.commit("updateCurrentPage", 1);
     }
   }
 };

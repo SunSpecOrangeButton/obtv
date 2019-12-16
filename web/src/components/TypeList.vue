@@ -74,6 +74,8 @@ export default {
     };
   },
   beforeCreate() {
+    this.$store.state.actvChk = false;
+    this.$store.state.searchTerm = "";
     this.$store.commit("callAPI", "types");
   },
   computed: {
@@ -92,11 +94,14 @@ export default {
       let tableData = this.$store.state.apiData.filter( node => {
           return node.code.toLowerCase().includes(this.$store.state.searchTerm.toLowerCase()) &&
             ((node.type.toLowerCase()=="non numeric" && this.$store.state.chkNonnumeric) ||
-             (node.type.toLowerCase()=="numeric" && this.$store.state.chkNumeric))
+             (node.type.toLowerCase()=="numeric" && this.$store.state.chkNumeric) ||
+             (node.type.toLowerCase()=="non numeric" && !this.$store.state.actvChk) ||
+             (node.type.toLowerCase()=="numeric" && !this.$store.state.actvChk))
       })
       this.numOfElem = 100
       this.showLoadMore = true
       this.filteredCount = tableData.length;
+      this.$store.state.returnItemsCount = this.filteredCount;
       return tableData;
     }
   },
@@ -118,6 +123,20 @@ export default {
     "$store.state.returnItemsCount"() {
       if (this.numOfElem >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      }
+    },
+    "$store.state.chkNonnumeric"() {
+      if (this.$store.state.chkNonnumeric) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
+      }
+    },
+    "$store.state.chkNumeric"() {
+      if (this.$store.state.chkNumeric) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
       }
     }
   }

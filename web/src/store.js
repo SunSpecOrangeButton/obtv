@@ -27,6 +27,7 @@ export default new Vuex.Store({
     queryString: "",
     searchTerm: "",
 
+<<<<<<< HEAD
     apiDetailData: {},
     apiDetailLoading: false,
     apiDetailDataReady: false,
@@ -34,23 +35,35 @@ export default new Vuex.Store({
     chkDocuments: true,
     chkData: true,
     chkProcess: true,
+=======
+    actvChk: false,
+>>>>>>> 6b4162fc81d5e955656a5c53991f0a2981cdb8b1
 
-    chkSolar: true,
-    chkUSGaap: true,
-    chkDEI: true,
+    chkDocuments: false,
+    chkData: false,
+    chkProcess: false,
 
-    chkNonnumeric: true,
-    chkNumeric: true,
+    chkSolar: false,
+    chkUSGaap: false,
+    chkDEI: false,
 
-    chkCustomary: true,
-    chkISO4217: true,
-    chkSI: true,
-    chkNonSI: true,
+    chkNonnumeric: false,
+    chkNumeric: false,
 
+<<<<<<< HEAD
     chkAcronym: true,
     chkAbbreviation: true,
 
     conceptDetail: "NONE"
+=======
+    chkCustomary: false,
+    chkISO4217: false,
+    chkSI: false,
+    chkNonSI: false,
+
+    chkAcronym: false,
+    chkAbbreviation: false
+>>>>>>> 6b4162fc81d5e955656a5c53991f0a2981cdb8b1
   },
   getters: {
     apiData: state => state.apiData,

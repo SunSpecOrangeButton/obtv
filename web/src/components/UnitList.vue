@@ -87,6 +87,8 @@ export default {
     };
   },
   beforeCreate() {
+    this.$store.state.actvChk = false;
+    this.$store.state.searchTerm = "";
     this.$store.commit("callAPI", "units");
   },
   computed: {
@@ -105,11 +107,16 @@ export default {
               ((node.standard.toLowerCase()=="customary" && this.$store.state.chkCustomary) ||
                (node.standard.toLowerCase()=="iso4217" && this.$store.state.chkISO4217) ||
                (node.standard.toLowerCase()=="si" && this.$store.state.chkSI) ||
-               (node.standard.toLowerCase()=="non-si" && this.$store.state.chkNonSI))
-       })
+               (node.standard.toLowerCase()=="non-si" && this.$store.state.chkNonSI) ||
+               (node.standard.toLowerCase()=="customary" && !this.$store.state.actvChk) ||
+               (node.standard.toLowerCase()=="iso4217" && !this.$store.state.actvChk) ||
+               (node.standard.toLowerCase()=="si" && !this.$store.state.actvChk) ||
+               (node.standard.toLowerCase()=="non-si" && !this.$store.state.actvChk))
+      })
       this.numOfElem = 100
       this.showLoadMore = true
       this.filteredCount = tableData.length;
+      this.$store.state.returnItemsCount = this.filteredCount;
       return tableData;
     }
   },
@@ -131,6 +138,34 @@ export default {
     "$store.state.returnItemsCount"() {
       if (this.numOfElem >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      }
+    },
+    "$store.state.chkCustomary"() {
+      if (this.$store.state.chkCustomary) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
+      }
+    },
+    "$store.state.chkISO4217"() {
+      if (this.$store.state.chkISO4217) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
+      }
+    },
+    "$store.state.chkSI"() {
+      if (this.$store.state.chkSI) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
+      }
+    },
+    "$store.state.chkNonSI"() {
+      if (this.$store.state.chkNonSI) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
       }
     }
   }

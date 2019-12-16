@@ -82,6 +82,8 @@ export default {
     };
   },
   beforeCreate() {
+    this.$store.state.actvChk = false;
+    this.$store.state.searchTerm = "";
     this.$store.commit("callAPI", "concepts");
   },
   computed: {
@@ -101,11 +103,15 @@ export default {
           return node.name.toLowerCase().includes(this.$store.state.searchTerm.toLowerCase()) &&
             ((node.taxonomy.toLowerCase()=="solar" && this.$store.state.chkSolar) ||
              (node.taxonomy.toLowerCase()=="us-gaap" && this.$store.state.chkUSGaap) ||
-             (node.taxonomy.toLowerCase()=="dei" && this.$store.state.chkDEI))
+             (node.taxonomy.toLowerCase()=="dei" && this.$store.state.chkDEI) ||
+             (node.taxonomy.toLowerCase()=="solar" && !this.$store.state.actvChk) ||
+             (node.taxonomy.toLowerCase()=="us-gaap" && !this.$store.state.actvChk) ||
+             (node.taxonomy.toLowerCase()=="dei" && !this.$store.state.actvChk))
       });
       this.numOfElem = 100
       this.showLoadMore = true
       this.filteredCount = tableData.length;
+      this.$store.state.returnItemsCount = this.filteredCount;
       return tableData;
     }
   },
@@ -132,6 +138,27 @@ export default {
     "$store.state.returnItemsCount"() {
       if (this.numOfElem >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      }
+    },
+    "$store.state.chkSolar"() {
+      if (this.$store.state.chkSolar) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
+      }
+    },
+    "$store.state.chkUSGaap"() {
+      if (this.$store.state.chkUSGaap) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
+      }
+    },
+    "$store.state.chkDEI"() {
+      if (this.$store.state.chkDEI) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
       }
     }
   }

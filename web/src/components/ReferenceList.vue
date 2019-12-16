@@ -69,6 +69,8 @@ export default {
     };
   },
   beforeCreate() {
+    this.$store.state.actvChk = false;
+    this.$store.state.searchTerm = "";
     this.$store.commit("callAPI", "references");
   },
   computed: {
@@ -87,11 +89,14 @@ export default {
       let tableData = this.$store.state.apiData.filter( node => {
           return node.code.toLowerCase().includes(this.$store.state.searchTerm.toLowerCase()) &&
             ((node.type.toLowerCase()=="acronym" && this.$store.state.chkAcronym) ||
-             (node.type.toLowerCase()=="abbreviation" && this.$store.state.chkAbbreviation))
+             (node.type.toLowerCase()=="abbreviation" && this.$store.state.chkAbbreviation) ||
+             (node.type.toLowerCase()=="acronym" && !this.$store.state.actvChk) ||
+             (node.type.toLowerCase()=="abbreviation" && !this.$store.state.actvChk))
       });
       this.numOfElem = 100
       this.showLoadMore = true
       this.filteredCount = tableData.length;
+      this.$store.state.returnItemsCount = this.filteredCount;
       return tableData;
     }
   },
@@ -113,6 +118,20 @@ export default {
     "$store.state.returnItemsCount"() {
       if (this.numOfElem >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      }
+    },
+    "$store.state.chkAcronym"() {
+      if (this.$store.state.chkAcronym) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
+      }
+    },
+    "$store.state.chkAbbreviation"() {
+      if (this.$store.state.chkAbbreviation) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
       }
     }
   }
