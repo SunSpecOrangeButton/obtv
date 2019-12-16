@@ -50,8 +50,11 @@ describe('ReferenceFilter', () => {
   it('clears all filters on clearFilters()', () => {
     const wrapper = shallowMount(ReferenceFilter, {store, localVue});
     wrapper.vm.clearFilters();
+    console.log(wrapper.vm.$store.state.chkAcronym)
+    console.log(wrapper.vm.$store.state.chkAbbreviation)
+    console.log(wrapper.vm.searchTerm)
     let result = wrapper.vm.$store.state.chkAcronym || wrapper.vm.$store.state.chkAbbreviation ||
-        wrapper.vm.search_string != "";
+        wrapper.vm.$store.state.searchTerm != "";
     expect(result).toBe(false);
    });
 });

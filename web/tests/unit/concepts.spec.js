@@ -51,7 +51,7 @@ describe('ConceptFilter', () => {
     const wrapper = shallowMount(ConceptFilter, {store, localVue});
     wrapper.vm.clearFilters();
     let result = wrapper.vm.$store.state.chkSolar || wrapper.vm.$store.state.chkUSGaap ||
-        wrapper.vm.$store.state.chkDEI || wrapper.vm.search_string != "";
+        wrapper.vm.$store.state.chkDEI || wrapper.vm.$store.state.searchTerm != "";
     expect(result).toBe(false);
   });
 });
