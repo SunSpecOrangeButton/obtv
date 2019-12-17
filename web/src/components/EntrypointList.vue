@@ -24,6 +24,7 @@
                     :fields="fields"
                     :items="apiData"
                     :busy="apiLoading"
+                    @row-clicked="rowClickHandler"
             >
                 <!-- :items="json" -->
                 <!-- :items="apiData.results" -->
@@ -108,6 +109,11 @@ export default {
 
   },
   methods: {
+    rowClickHandler(rowDetails) {
+      console.log(rowDetails["entrypoint"]);
+      this.$store.commit("callAPIdetail", ["entrypointdetail", rowDetails["entrypoint"]]);
+      this.$store.state.entrypointDetail = rowDetails["entrypoint"];
+    },
     loadMore() {
       this.numOfElem += 100;
       if (this.numOfElem >= this.$store.state.returnItemsCount

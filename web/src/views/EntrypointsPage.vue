@@ -31,6 +31,9 @@
         <div class="entrypoint-search-body">
             <component-entrypoint-list></component-entrypoint-list>
         </div>
+        <div class="entrypoint-detail-sidebar">
+            <component-entrypoint-detail></component-entrypoint-detail>
+        </div>
     </div>
 </template>
 
@@ -38,10 +41,12 @@
 <script>
 import EntrypointFilter from "../components/EntrypointFilter.vue";
 import EntrypointList from "../components/EntrypointList.vue";
+import EntrypointDetail from "../components/EntrypointDetail.vue";
 export default {
   components: {
     "component-entrypoint-list": EntrypointList,
-    "component-entrypoint-filter": EntrypointFilter
+    "component-entrypoint-filter": EntrypointFilter,
+    "component-entrypoint-detail": EntrypointDetail
   },
   computed: {
     returnItemsCount() {
@@ -69,6 +74,11 @@ export default {
 .entrypoint-search-body {
   grid-column: 4 / span 2;
   grid-row: 1 / span 2;
+}
+
+.entrypoint-detail-sidebar {
+  grid-column: 6 / span 2;
+  grid-row: 2 / 3;
 }
 
 .breadcrumbs {
