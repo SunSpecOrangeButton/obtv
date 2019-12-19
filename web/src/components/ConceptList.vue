@@ -117,7 +117,6 @@ export default {
   },
   methods: {
     rowClickHandler(rowDetails) {
-        console.log(rowDetails["name"], rowDetails["taxonomy"]);
         this.$store.commit("callAPIdetail", ["conceptdetail", rowDetails["name"], rowDetails["taxonomy"]]);
         this.$store.state.conceptDetail = rowDetails["name"];
     },

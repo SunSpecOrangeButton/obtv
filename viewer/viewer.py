@@ -29,7 +29,6 @@ import re
 from oblib import taxonomy, data_model, parser
 from flask import Flask, request, render_template
 from flask_cors import CORS
-import jsonpickle
 
 RETURN_INDEX = "<h2><a href='/html'>Return to search page</a></h2>"
 tax = None
@@ -422,8 +421,6 @@ def entrypoint_detail(entrypoint):
 
     try:
         s = json.dumps(relationships.create_json(entrypoint))
-        # abstracts = relationships.create_abstracts(entrypoint)
-        # s = jsonpickle.encode(abstracts, make_refs=False, warn=True, keys=False)
         return s
 
     except Exception as e:

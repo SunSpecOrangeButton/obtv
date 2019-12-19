@@ -14,30 +14,47 @@
 
 <template>
      <div class="public-filter">
-         <entrypoint-child v-bind:abstract="apiData" v-bind:key="apiData.name"></entrypoint-child>
+        <h2>{{ abstract.name }}</h2>
+
+        <form @submit.prevent>
+            <br/>
+            <h2><a :name="abstract.name">{{ abstract.name }} (Abstract)</a> </h2>
+            <ul>
+                <li v-for="item in abstract.members">
+                    <div v-if="item.indexOf('Abstract') != -1">{{ item.replace('Abstract', '') }}<a :href="'#'+item.replace('Abstract', '')"> (Abstract)</a></div>
+                    <div v-else>{{ item }}</div>
+                </li>
+
+                <div v-if="abstract.tables != null">
+                    <br/>
+                    <div v-for="item in abstract.tables" style="margin-left:25px">
+                        <h2>{{ item.name }} (Table)</h2>
+                        <table border="1" style="margin-left:5px">
+                            <tr>
+                                <th>Concept</th>
+                                <th>Purpose</th>
+                            </tr>
+                            <tr v-for="citem in item.columns">
+                                <td>{{ citem.name }}</td>
+                                <td v-if="citem.purpose == 'Abstract'"><a :href="'#'+citem.name">{{ citem.purpose }}</a></td>
+                                <td v-else>{{ citem.purpose }}</td>
+                            </tr>
+                        </table>
+                        <entrypoint-child v-for="abstract in item.children" :abstract="abstract" v-bind:key="abstract.name"></entrypoint-child>
+                        <br/>
+                    </div>
+                </div>
+                <entrypoint-child v-for="abstract in abstract.children" :abstract="abstract" v-bind:key="abstract.name"></entrypoint-child>
+            </ul>
+        </form>
     </div>
 </template>
 
 <script>
 
-
-import EntrypointDetailChild from "../components/EntrypointDetailChild.vue";
-
 export default {
-  props: ["cn"],
-  methods: {
-  },
-  components: {
-    "entrypoint-child": EntrypointDetailChild
-  },
-  computed: {
-    apiData() {
-      return this.$store.state.apiDetailData;
-    },
-    entrypointName() {
-      return this.$store.state.entrypointDetail;
-    }
-  }
+  name: "entrypoint-child",
+  props: ["abstract"]
 };
 
 

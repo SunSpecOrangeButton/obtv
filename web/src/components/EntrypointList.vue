@@ -110,7 +110,6 @@ export default {
   },
   methods: {
     rowClickHandler(rowDetails) {
-      console.log(rowDetails["entrypoint"]);
       this.$store.commit("callAPIdetail", ["entrypointdetail", rowDetails["entrypoint"]]);
       this.$store.state.entrypointDetail = rowDetails["entrypoint"];
     },
