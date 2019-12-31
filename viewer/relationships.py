@@ -188,7 +188,6 @@ def create_json(entrypoint):
     return j
 
 def subprocess(a, level, j):
-    print(a)
     j["name"] = a.name
     if a.members:
         j["members"] =  a.members

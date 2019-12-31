@@ -11,8 +11,8 @@
 # limitations under the License.
 
 """
-This is a temporary file to hold reference data until it can be incorporated into a more
-permanent location (either pyoblib or solar-taxonomy).
+This is a temporary file to hold reference data for various reasons, either because it is only relevant to obtv
+or it has not been produced in a more permanent location (either pyoblib or solar-taxonomy).
 """
 
 ACRONYMS = {
@@ -332,3 +332,113 @@ ABBREVIATIONS = {
     "Measurement": "Meas",
     "Measurements": "Meas"
 }
+
+
+TYPES = {
+    "dei:legalEntityIdentifierItemType": "String",
+    "nonnum:domainItemType": "String",
+    "num-us:electricCurrentItemType":  "Float",
+    "num-us:frequencyItemType": "Float",
+    "num-us:insolationItemType": "Float",
+    "num-us:irradianceItemType": "Float",
+    "num-us:planeAngleItemType": "Float",
+    "num-us:pressureItemType": "Float",
+    "num-us:speedItemType": "Float",
+    "num-us:temperatureItemType": "Float",
+    "num-us:voltageItemType": "Float",
+    "num:areaItemType": "Float",
+    "num:energyItemType": "Float",
+    "num:lengthItemType": "Float",
+    "num:massItemType": "Float",
+    "num:percentItemType": "Float",
+    "num:powerItemType": "Float",
+    "num:volumeItemType": "Float",
+    "solar-types:DERItemType": "Enumeration",
+    "solar-types:aLTASurveyItemType": "Enumeration",
+    "solar-types:approvalRequestItemType": "Enumeration",
+    "solar-types:approvalStatusItemType": "Enumeration",
+    "solar-types:assetSecuredItemType": "Enumeration",
+    "solar-types:batteryChemistryItemType": "Enumeration",
+    "solar-types:batteryConnectionItemType": "Enumeration",
+    "solar-types:climateClassificationKoppenItemType": "Enumeration",
+    "solar-types:climateZoneANSIItemType": "Enumeration",
+    "solar-types:communicationProtocolItemType": "Enumeration",
+    "solar-types:creditSupportStatusItemType": "Enumeration",
+    "solar-types:deviceItemType": "Enumeration",
+    "solar-types:distributedGenOrUtilityScaleItemType": "Enumeration",
+    "solar-types:divisionStateApprovalStatusItemType": "Enumeration",
+    "solar-types:employeeLevelItemType": "Enumeration",
+    "solar-types:employeeRoleItemType": "Enumeration",
+    "solar-types:energyBudgetPhaseItemType": "Enumeration",
+    "solar-types:eventSeverityItemType": "Enumeration",
+    "solar-types:eventStatusItemType": "Enumeration",
+    "solar-types:feeStatusItemType": "Enumeration",
+    "solar-types:financialTransactionItemType": "Enumeration",
+    "solar-types:financingEventItemType": "Enumeration",
+    "solar-types:fundOrProjectItemType": "Enumeration",
+    "solar-types:fundStatusItemType": "Enumeration",
+    "solar-types:gISFileFormatItemType": "Enumeration",
+    "solar-types:hedgeItemType": "Enumeration",
+    "solar-types:insuranceItemType": "Enumeration",
+    "solar-types:internetConnectionItemType": "Enumeration",
+    "solar-types:inverterItemType": "Enumeration",
+    "solar-types:inverterPhaseItemType": "Enumeration",
+    "solar-types:investmentStatusItemType": "Enumeration",
+    "solar-types:mORLevelItemType": "Enumeration",
+    "solar-types:moduleItemType": "Enumeration",
+    "solar-types:moduleOrientationItemType": "Enumeration",
+    "solar-types:moduleTechnologyItemType": "Enumeration",
+    "solar-types:mountingItemType": "Enumeration",
+    "solar-types:occupancyItemType": "Enumeration",
+    "solar-types:optimizerTypeItemType": "Enumeration",
+    "solar-types:participantItemType": "Enumeration",
+    "solar-types:preventiveMaintenanceTaskStatusItemType": "Enumeration",
+    "solar-types:projectAssetTypeItemType": "Enumeration",
+    "solar-types:projectClassItemType": "Enumeration",
+    "solar-types:projectInterconnectionItemType": "Enumeration",
+    "solar-types:projectPhaseItemType": "Enumeration",
+    "solar-types:projectStageItemType": "Enumeration",
+    "solar-types:regulatoryApprovalStatusItemType": "Enumeration",
+    "solar-types:regulatoryFacilityItemType": "Enumeration",
+    "solar-types:reserveCollateralItemType": "Enumeration",
+    "solar-types:reserveUseItemType": "Enumeration",
+    "solar-types:roofItemType": "Enumeration",
+    "solar-types:roofSlopeItemType": "Enumeration",
+    "solar-types:securityInterestItemType": "Enumeration",
+    "solar-types:securityInterestStatusItemType": "Enumeration",
+    "solar-types:siteControlItemType": "Enumeration",
+    "solar-types:solarSystemCharacterItemType": "Enumeration",
+    "solar-types:sparePartsStatusItemType": "Enumeration",
+    "solar-types:sPVOrCounterpartyItemType": "Enumeration",
+    "solar-types:systemAvailabilityModeItemType": "Enumeration",
+    "solar-types:systemOperationalStatusItemType": "Enumeration",
+    "solar-types:titlePolicyInsuranceItemType": "Enumeration",
+    "solar-types:trackerItemType": "Enumeration",
+    "solar-types:uuidItemType": "String",
+    "solar-types:uuidXbrlItemType": "String",
+    "solar-types:zoningPermitPropertyItemType": "Enumeration",
+    "us-types:perUnitItemType": "String",
+    "xbrli:anyURIItemType": "URI",
+    "xbrli:booleanItemType": "Boolean",
+    "xbrli:dateItemType": "Date",
+    "xbrli:decimalItemType": "Float",
+    "xbrli:durationItemType": "String",
+    "xbrli:integerItemType": "Integer",
+    "xbrli:monetaryItemType": "Float",
+    "xbrli:normalizedStringItemType": "String",
+    "xbrli:pureItemType": "String",
+    "xbrli:stringItemType": "String"
+}
+
+
+VALIDATION_RULES = {
+    "String": "Any String is valid",
+    "Boolean": "Boolean values (TRUE or FALSE) are valid",
+    "Integer": "Integer values (no decimal point) are valid",
+    "Float": "Float values (with or without decimal point) are valid",
+    "Enumeration": "Value must be one of the enumerated values listed below:",
+    "URI": "Value must be a valid internet URI/URL format (but does not necessarily need to exist on the internet)",
+    "UUID": "Value must be a valid UUID (xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx)",
+    "LEI": "Value must be a 20 character LEI string"
+}
+
