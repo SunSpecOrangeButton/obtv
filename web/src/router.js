@@ -16,7 +16,6 @@ import Home from "./views/HomePage.vue";
 import About from "./views/AboutPage.vue";
 import Concepts from "./views/ConceptsPage.vue"
 import EntrypointsPage from "./views/EntrypointsPage.vue";
-import Login from "./views/Login";
 import TypesPage from "./views/TypesPage.vue";
 import UnitsPage from "./views/UnitsPage";
 import ReferencesPage from "./views/ReferencesPage";
@@ -26,11 +25,6 @@ Vue.use(Router);
 export default new Router({
   routes: [
     { path: "/", redirect: "/entrypoints" },
-    // {
-    //   path: "/login",
-    //   name: "login",
-    //   component: Login
-    // },
     {
       path: "/entrypoints",
       name: "entrypoints",
