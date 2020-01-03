@@ -58,7 +58,7 @@ export default {
         },
         {
           key: "type",
-          label: "Type",
+          label: "Standard",
           thClass: ".col-field-styling",
           thStyle: { width: "87px" }
         },
