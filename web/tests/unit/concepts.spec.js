@@ -30,7 +30,7 @@ describe('ConceptsPage', () => {
 
   it('renders a correct markup clip', () => {
     const wrapper = shallowMount(ConceptsPage, { store, localVue });
-    expect(wrapper.html()).toContain('Download Search Results');
+    expect(wrapper.html()).toContain('Concepts');
   });
 
   it('sets the computed count correctly', () => {

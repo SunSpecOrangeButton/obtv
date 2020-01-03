@@ -29,7 +29,7 @@ describe('EntrypointsPage', () => {
 
   it('renders a correct markup clip', () => {
     const wrapper = shallowMount(EntrypointsPage, { store, localVue });
-    expect(wrapper.html()).toContain('Download Search Results');
+    expect(wrapper.html()).toContain('Entrypoints');
   });
 
   it('sets the computed count correctly', () => {

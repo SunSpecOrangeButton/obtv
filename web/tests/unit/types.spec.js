@@ -34,7 +34,7 @@ describe('TypesPage', () => {
 
   it('renders a correct markup clip', () => {
     const wrapper = shallowMount(TypesPage, { store, localVue });
-    expect(wrapper.html()).toContain('Download Search Results');
+    expect(wrapper.html()).toContain('Types');
   });
 
   it('sets the computed count correctly', () => {
