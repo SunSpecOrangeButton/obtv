@@ -24,22 +24,21 @@
                 <tr>
                     <td>
                         <p>
-                            Orange Button is an open data exchange standard for the distributed solar PV industry. Comprised of
+                            Orange Button is an open data exchange standard for the distributed solar PV industry. Comprising
                             information models, a standard taxonomy, a standard Application Program Interface (API), and supporting
                             compliance test suites, Orange Button enables the free flow of data between information systems used in
                             the solar asset lifecycle to decrease long term costs and increase innovation.
                         </p>
                         <p>
-                            Orange Button is powered by XBRL. XBRL is a standards-based way to communicate and exchange business
-                            information between business systems. These communications are defined by metadata set out in
-                            taxonomies, which capture the definition of individual reporting concepts as well as the relationships
+                            Orange Button is powered by XBRL. XBRL is a global open data standard that renders information machine-readable
+                            and improves ability to communicate and exchange business information. These communications are defined by
+                            metadata set out in taxonomies, which define individual reporting concepts as well as the relationships
                             between concepts and other semantic meaning.
                         </p>
                         <p>
-                            The Orange Button Taxonomy Viewer allows for Orange Button Entrypoints, Concepts, Types, and Units to be
-                            searched and displayed in a manner that is appropriate for either a non-technical business user or a
-                            technical user who is not an XBRL Expert. XBRL Experts may prefer using XBRL desktop software such as
-                            the open source <a href="http://arelle.org/arelle/">Arelle</a> software which fully exposes the full
+                            The Orange Button Taxonomy Viewer allows for searching and displaying Orange Button Entrypoints, Concepts, Types,
+                            and Units by non-XBRL Experts. XBRL Experts may prefer using XBRL desktop software such as
+                            the open source <a href="http://arelle.org/arelle/">Arelle</a> software which fully exposes the
                             XBRL syntax.
                         </p>
                         <p>
@@ -70,14 +69,15 @@
                 <tr>
                     <td valign="top"><b>Types:</b></td>
                     <td>
-                        Types (also called Item Types) may be a simple data type (String, Integer, ...) but also
-                        may also may be more specific (Money, Energy, ...) for various concepts. All concepts have
-                        a type.
+                        Item Types may be a simple data type (String, Integer, ...) but also may also may be more specific
+                        (Monetary, Energy, ...) for various concepts. All concepts have an Item Type.
                     </td>
                 </tr>
                 <tr>
                     <td valign="top"><b>Units:</b></td>
-                    <td>Units of measurement may be assigned to certain concepts. Not all concepts require types.</td>
+                    <td>Units of measurement may be assigned to certain concepts. Units are required for certain numeric
+                        facts.  For example, monetary units must have an associated currency, such as US dollars (USD).
+                    </td>
                 </tr>
                 <tr>
                     <td valign="top"><b>Glossary</b></td>
