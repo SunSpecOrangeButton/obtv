@@ -37,7 +37,16 @@
                             <tr v-for="citem in item.columns">
                                 <td>{{ citem.name }}</td>
                                 <td v-if="citem.purpose == 'Abstract'"><a :href="'#'+citem.name">{{ citem.purpose }}</a></td>
-                                <td v-else>{{ citem.purpose }}</td>
+                                <td v-else>{{ citem.purpose }}
+                                    <div v-if="citem.valuesenum != null">
+                                        Legal Values:
+                                        <ul>
+                                            <li v-for="vitem in citem.valuesenum">
+                                                {{ vitem }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
                         </table>
                         <entrypoint-child v-for="abstract in item.children" :abstract="abstract" v-bind:key="abstract.name"></entrypoint-child>
