@@ -52,8 +52,8 @@ export default new Router({
        component: UnitsPage
      },
      {
-       path: "/references",
-       name: "references",
+       path: "/glossary",
+       name: "glossary",
        component: ReferencesPage
      },
      {
