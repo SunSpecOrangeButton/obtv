@@ -43,9 +43,10 @@ export default new Vuex.Store({
     chkUSGaap: false,
     chkDEI: false,
 
-    chkNonnumeric: false,
+    chkSolarType: false,
     chkNumeric: false,
-    chkOther: false,
+    chkBasic: false,
+    chkDeiType: false,
 
     chkAcronym: true,
     chkAbbreviation: true,
@@ -141,9 +142,10 @@ export default new Vuex.Store({
       state.chkDEI = false;
     },
     clearTypesChks(state) {
-      state.chkNonnumeric = false;
+      state.chkSolarType = false;
       state.chkNumeric = false;
-      state.chkOther = false;
+      state.chkBasic = false;
+      state.chkDeiType = false;
     },
     clearUnitsChks(state) {
       state.chkCustomary = false;

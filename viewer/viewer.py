@@ -150,21 +150,21 @@ def types():
                 values += e
             data.append({
                 "code": name.replace("solar-types:", "").replace("ItemType", ""),
-                "type": "Non numeric",
+                "type": reference.TYPE_MAPPINGS[name.split(":")[0]],
                 "values": values,
                 "definition": ""
             })
         elif name in numeric_types:
             data.append({
                 "code": name.replace("num-us:", ""),
-                "type": "Numeric",
+                "type": reference.TYPE_MAPPINGS[name.split(":")[0]],
                 "values": "N/A",
                 "definition": ""
             })
         else:
             data.append({
                 "code": name.split(":")[1].replace("ItemType", ""),
-                "type": "Other",
+                "type": reference.TYPE_MAPPINGS[name.split(":")[0]],
                 "values": "N/A",
                 "definition": ""
             })

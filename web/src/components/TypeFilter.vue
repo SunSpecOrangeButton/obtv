@@ -28,15 +28,17 @@
 
             <h1>Type</h1>
             <div class="form-group">
-                <label for="nonnumeric">
-                    <input type="checkbox" id="nonnumeric" value="NonNumeric" v-model="$store.state.chkNonnumeric"/> Non
-                    Numeric
+                <label for="solar">
+                    <input type="checkbox" id="Solar" value="Solar" v-model="$store.state.chkSolarType"/> Solar
                 </label>
                 <label for="numeric">
-                    <input type="checkbox" id="numeric" value="Numeric" v-model="$store.state.chkNumeric"/> Numeric
+                    <input type="checkbox" id="Numeric" value="Numeric" v-model="$store.state.chkNumeric"/> Numeric
                 </label>
-                <label for="other">
-                    <input type="checkbox" id="other" value="Other" v-model="$store.state.chkOther"/> Other
+                <label for="basic">
+                    <input type="checkbox" id="Basic" value="Basic" v-model="$store.state.chkBasic"/> Basic
+                </label>
+                <label for="dei">
+                    <input type="checkbox" id="DEI" value="DEI" v-model="$store.state.chkDeiType"/> DEI
                 </label>
             </div>
             <div class="button-group">

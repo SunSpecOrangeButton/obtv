@@ -93,12 +93,14 @@ export default {
     searchFilter() {
       let tableData = this.$store.state.apiData.filter( node => {
           return node.code.toLowerCase().includes(this.$store.state.searchTerm.toLowerCase()) &&
-            ((node.type.toLowerCase()=="non numeric" && this.$store.state.chkNonnumeric) ||
+            ((node.type.toLowerCase()=="solar" && this.$store.state.chkSolarType) ||
              (node.type.toLowerCase()=="numeric" && this.$store.state.chkNumeric) ||
-             (node.type.toLowerCase()=="other" && this.$store.state.chkOther) ||
-             (node.type.toLowerCase()=="non numeric" && !this.$store.state.actvChk) ||
+             (node.type.toLowerCase()=="basic" && this.$store.state.chkBasic) ||
+             (node.type.toLowerCase()=="dei" && this.$store.state.chkDeiType) ||
+             (node.type.toLowerCase()=="solar" && !this.$store.state.actvChk) ||
              (node.type.toLowerCase()=="numeric" && !this.$store.state.actvChk) ||
-             (node.type.toLowerCase()=="other" && !this.$store.state.actvChk))
+             (node.type.toLowerCase()=="basic" && !this.$store.state.actvChk) ||
+             (node.type.toLowerCase()=="dei" && !this.$store.state.actvChk))
       })
       this.numOfElem = 100
       this.showLoadMore = true
@@ -127,8 +129,8 @@ export default {
         this.showLoadMore = false
       }
     },
-    "$store.state.chkNonnumeric"() {
-      if (this.$store.state.chkNonnumeric) {
+    "$store.state.chkSolarType"() {
+      if (this.$store.state.chkSolarType) {
         this.$store.state.actvChk = true
       } else {
         this.$store.state.actvChk = false
@@ -141,8 +143,15 @@ export default {
         this.$store.state.actvChk = false
       }
     },
-    "$store.state.chkOther"() {
-      if (this.$store.state.chkOther) {
+    "$store.state.chkBasic"() {
+      if (this.$store.state.chkBasic) {
+        this.$store.state.actvChk = true
+      } else {
+        this.$store.state.actvChk = false
+      }
+    },
+    "$store.state.chkDeiType"() {
+      if (this.$store.state.chkDeiType) {
         this.$store.state.actvChk = true
       } else {
         this.$store.state.actvChk = false
