@@ -27,8 +27,8 @@ import json
 import re
 
 import werkzeug
-from oblib import taxonomy, data_model, parser
-from flask import Flask, request, render_template, make_response, jsonify
+from oblib import taxonomy
+from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 
 RETURN_INDEX = "<h2><a href='/html'>Return to search page</a></h2>"
@@ -103,7 +103,7 @@ def concepts():
             data.append({
                 "name": details.name,
                 "taxonomy": t,
-                "datatype": details.type_name.split(":")[1].replace("ItemType", ""),
+                "itemtype": details.type_name.split(":")[1].replace("ItemType", ""),
                 "period": details.period_type.value
             })
 

@@ -40,7 +40,7 @@ class TestViewer(TestCase):
         self.assertEqual(3404, len(data))
         self.assertTrue("name" in data[0])
         self.assertTrue("taxonomy" in data[0])
-        self.assertTrue("datatype" in data[0])
+        self.assertTrue("itemtype" in data[0])
         self.assertTrue("period" in data[0])
 
     def test_types(self):

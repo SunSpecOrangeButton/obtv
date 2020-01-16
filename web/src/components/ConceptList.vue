@@ -65,8 +65,8 @@ export default {
           thStyle: { width: "87px" }
         },
         {
-          key: "datatype",
-          label: "Data Type",
+          key: "itemtype",
+          label: "Item Type",
           thClass: ".col-field-styling",
           thStyle: { width: "87px" }
         },

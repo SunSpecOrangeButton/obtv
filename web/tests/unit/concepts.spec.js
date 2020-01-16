@@ -22,8 +22,8 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 
 process.env.TEST_JSON =  `[
-    {"name": "Curtailment", "taxonomy": "SOLAR", "datatype": "energy", "period": "duration"},
-    {"name": "AccruedLiabilitiesCurrent", "taxonomy": "US-GAAP", "datatype": "monetary", "period": "instant"}
+    {"name": "Curtailment", "taxonomy": "SOLAR", "itemtype": "energy", "period": "duration"},
+    {"name": "AccruedLiabilitiesCurrent", "taxonomy": "US-GAAP", "itemtype": "monetary", "period": "instant"}
 ]`;
 
 describe('ConceptsPage', () => {
@@ -69,7 +69,7 @@ describe('ConceptList', () => {
     expect(wrapper.vm.$store.state.returnItemsCount).toBe(2);
     expect(wrapper.vm.$store.state.apiData[0]["name"]).toBe("Curtailment");
     expect(wrapper.vm.$store.state.apiData[0]["taxonomy"]).toBe("SOLAR");
-    expect(wrapper.vm.$store.state.apiData[1]["datatype"]).toBe("monetary");
+    expect(wrapper.vm.$store.state.apiData[1]["itemtype"]).toBe("monetary");
     expect(wrapper.vm.$store.state.apiData[1]["period"]).toBe("instant");
     expect(wrapper.vm.$store.state.apiLoading).toBe(false);
     expect(wrapper.vm.$store.state.dataReady).toBe(true);
