@@ -26,8 +26,8 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 
 process.env.TEST_JSON = `[
-    {"code": "fundStatus", "type": "Non numeric", "values": "Closed, Open, Committed"},
-    {"code": "force", "type": "Numeric", "values": "N/A"}
+    {"code": "fundStatus", "type": "solar", "values": "Closed, Open, Committed"},
+    {"code": "force", "type": "numeric", "values": "N/A"}
 ]`;
 
 describe('TypesPage', () => {
@@ -55,7 +55,8 @@ describe('TypeFilter', () => {
   it('clears all filters on clearFilters()', () => {
     const wrapper = shallowMount(TypeFilter, {store, localVue});
     wrapper.vm.clearFilters();
-    let result = wrapper.vm.$store.state.chkNumeric || wrapper.vm.$store.state.chkNonNumeric ||
+    let result = wrapper.vm.$store.state.chkNumeric || wrapper.vm.$store.state.chkBasic ||
+        wrapper.vm.$store.state.chkSolarType || wrapper.vm.$store.state.chkDeiType ||
         wrapper.vm.$store.state.searchTerm != "";
     expect(result).toBe(false);
    });
@@ -72,7 +73,7 @@ describe('TypeList', () => {
     const wrapper = shallowMount(TypeList, {store, localVue});
     expect(wrapper.vm.$store.state.returnItemsCount).toBe(2);
     expect(wrapper.vm.$store.state.apiData[0]["code"]).toBe("fundStatus");
-    expect(wrapper.vm.$store.state.apiData[1]["type"]).toBe("Numeric");
+    expect(wrapper.vm.$store.state.apiData[1]["type"]).toBe("numeric");
     expect(wrapper.vm.$store.state.apiData[0]["values"]).toBe("Closed, Open, Committed");
     expect(wrapper.vm.$store.state.apiLoading).toBe(false);
     expect(wrapper.vm.$store.state.dataReady).toBe(true);
