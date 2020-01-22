@@ -89,7 +89,7 @@ export default {
   beforeCreate() {
     this.$store.state.actvChk = false;
     this.$store.state.searchTerm = "";
-    this.$store.commit("callAPI", "units");
+    this.$store.commit("callAPI", "units/");
   },
   computed: {
     apiData() {

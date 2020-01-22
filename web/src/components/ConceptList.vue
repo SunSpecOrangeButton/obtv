@@ -46,7 +46,6 @@
 </template>
 
 <script>
-
 export default {
   props: ["admin_page"],
   data() {
@@ -84,7 +83,7 @@ export default {
   beforeCreate() {
     this.$store.state.actvChk = false;
     this.$store.state.searchTerm = "";
-    this.$store.commit("callAPI", "concepts");
+    this.$store.commit("callAPI", "concepts/none");
   },
   computed: {
     apiData() {

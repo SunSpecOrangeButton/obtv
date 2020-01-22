@@ -76,7 +76,7 @@ export default {
   beforeCreate() {
     this.$store.state.actvChk = false;
     this.$store.state.searchTerm = "";
-    this.$store.commit("callAPI", "entrypoints");
+    this.$store.commit("callAPI", "entrypoints/");
   },
   computed: {
     apiData() {

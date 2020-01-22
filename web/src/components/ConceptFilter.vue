@@ -37,6 +37,8 @@
                 <label for="process">
                     <input type="checkbox" id="dei" value="DEI" v-model="$store.state.chkDEI"/> DEI
                 </label>
+                Select entrypoint:
+                <b-form-select v-model="entryPointSelected" :options="entryPointList"></b-form-select>
             </div>
             <div class="button-group">
                 <button type="button" class="btn btn-primary" @click="updateQuery">
@@ -51,7 +53,26 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
+  data() {
+    return {
+      entryPointList: [],
+      entryPointSelected: ''
+    }
+  },
+  beforeCreate() {
+    axios
+    .get(this.$store.state.apiURL + "entrypoints/", {
+    })
+    .then(response => {
+      let entrypoint_data = response.data;
+      for (let i in entrypoint_data) {
+        this.entryPointList.push(entrypoint_data[i]["entrypoint"])
+      }
+    });
+  },
   methods: {
     updateQuery() {
        // TODO: Remove - currently referenced in other code.
@@ -61,7 +82,15 @@ export default {
       this.$store.state.searchTerm = "";
       this.$store.commit("clearQueryString");
       this.$store.commit("clearConceptsChks");
-      this.$store.commit("callAPI", "concepts");
+      this.entryPointSelected = '';
+      this.$store.commit("callAPI", "concepts/none");
+    }
+  },
+  watch: {
+    entryPointSelected() {
+      if (this.entryPointSelected) {
+        this.$store.commit("callAPI", "concepts/" + this.entryPointSelected);
+      }
     }
   }
 };

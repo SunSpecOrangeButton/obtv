@@ -61,7 +61,7 @@ export default {
       this.$store.state.searchTerm = "";
       this.$store.commit("clearQueryString");
       this.$store.commit("clearEntrypointsChks")
-      this.$store.commit("callAPI", "entrypoints");
+      this.$store.commit("callAPI", "entrypoints/");
     }
   }
 };
