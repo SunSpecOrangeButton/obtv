@@ -16,7 +16,7 @@
     <div id="app">
         <Navbar id="navbar"></Navbar>
         <router-view id="router-v"/>
-        <Footer id="footer"></Footer>
+        <!-- <Footer id="footer"></Footer> -->
     </div>
 </template>
 
@@ -36,18 +36,17 @@ export default {
 body,
 html {
   height: 100%;
+  overflow-y: none;
   background-color: white !important;
 }
 #app {
   font-family: "Montserrat";
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   background-color: white;
   display: grid;
   grid-template-rows: 70px 0px 1000px 10px 60px;
-  height: 100vh;
 }
 
 #footer {

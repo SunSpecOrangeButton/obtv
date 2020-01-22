@@ -67,6 +67,7 @@ export default {
 .concept-search-body {
   grid-column: 4 / span 2;
   grid-row: 1 / span 2;
+  height: 100%;
 }
 
 .concept-detail-sidebar {

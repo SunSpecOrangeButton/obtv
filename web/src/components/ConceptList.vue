@@ -179,6 +179,7 @@ export default {
   height: 100%;
   padding-top: 5px;
   width: 1163px;
+  overflow-y: auto;
 }
 
 li {
@@ -227,7 +228,6 @@ ul {
   grid-row: 2 / 3;
   grid-column: 1 /2;
   width: 1163px;
-  //overflow-y: auto;
 }
 
 a.nav-link {

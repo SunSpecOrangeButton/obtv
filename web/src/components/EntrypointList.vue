@@ -220,7 +220,8 @@ ul {
   grid-row: 2 / 3;
   grid-column: 1 /2;
   width: 1163px;
-  //overflow-y: auto;
+  height: 100%;
+  overflow-y: auto;
 }
 
 a.nav-link {
