@@ -19,7 +19,7 @@ import EntrypointsPage from "./views/EntrypointsPage.vue";
 import Login from "./views/Login";
 import TypesPage from "./views/TypesPage.vue";
 import UnitsPage from "./views/UnitsPage";
-import ReferencesPage from "./views/ReferencesPage";
+import GlossaryPage from "./views/GlossaryPage";
 
 Vue.use(Router);
 
@@ -54,7 +54,7 @@ export default new Router({
      {
        path: "/glossary",
        name: "glossary",
-       component: ReferencesPage
+       component: GlossaryPage
      },
      {
        path: "/about",

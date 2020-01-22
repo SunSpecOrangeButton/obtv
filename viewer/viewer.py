@@ -202,9 +202,9 @@ def entrypoints():
     return jsonify(data)
 
 
-@app.route('/references/', methods=['GET'])
-def references():
-    """Flask Read Handler for types API Endpoint"""
+@app.route('/glossary/', methods=['GET'])
+def glossary():
+    """Flask Read Handler for glossary API Endpoint"""
 
     data = []
     for item in reference.ACRONYMS.items():

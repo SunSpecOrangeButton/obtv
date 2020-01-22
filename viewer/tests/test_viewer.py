@@ -61,8 +61,8 @@ class TestViewer(TestCase):
         self.assertTrue("standard" in data[0])
         self.assertTrue("definition" in data[0])
 
-    def test_references(self):
-        data = json.loads(viewer.references().data.decode('UTF-8'))
+    def test_glossary(self):
+        data = json.loads(viewer.glossary().data.decode('UTF-8'))
         self.assertEqual(305, len(data))
         self.assertTrue("type" in data[0])
         self.assertTrue("code" in data[0])
