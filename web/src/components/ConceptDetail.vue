@@ -94,7 +94,6 @@ h1 {
 .public-filter {
   padding-left: 20px;
   padding-top: 5px;
-  overflow-x: auto;
 }
 
 .form-group {

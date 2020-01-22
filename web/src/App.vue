@@ -36,7 +36,6 @@ export default {
 body,
 html {
   height: 100%;
-  overflow-y: none;
   background-color: white !important;
 }
 #app {
