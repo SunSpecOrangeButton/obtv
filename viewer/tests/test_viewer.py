@@ -36,7 +36,7 @@ class TestViewer(TestCase):
 
         app = Flask(__name__)
         app.config['TESTING'] = True
-        data = json.loads(viewer.concepts().data.decode('UTF-8'))
+        data = json.loads(viewer.concepts("none").data.decode('UTF-8'))
         self.assertEqual(3404, len(data))
         self.assertTrue("name" in data[0])
         self.assertTrue("taxonomy" in data[0])
