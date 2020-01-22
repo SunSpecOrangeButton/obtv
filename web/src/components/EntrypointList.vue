@@ -100,10 +100,14 @@ export default {
              (node.type.toLowerCase()=="documents" && !this.$store.state.actvChk) ||
              (node.type.toLowerCase()=="process" && !this.$store.state.actvChk))
       });
-      this.numOfElem = 100
-      this.showLoadMore = true
-      this.filteredCount = tableData.length;
-      this.$store.state.returnItemsCount = this.filteredCount;
+      this.$store.state.returnItemsCount = tableData.length;
+      
+      if (this.numOfElem + 1 >= this.$store.state.returnItemsCount) {
+        this.showLoadMore = false
+      } else {
+        this.showLoadMore = true
+      }
+
       return tableData;
     }
 
@@ -115,21 +119,20 @@ export default {
     },
     loadMore() {
       this.numOfElem += 100;
-      if (this.numOfElem >= this.$store.state.returnItemsCount
-          || this.numOfElem >= this.filteredCount) {
+      if (this.numOfElem + 1 >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      } else {
+        this.showLoadMore = true
       }
     }
   },
   watch: {
-    filteredCount() {
-      if (this.numOfElem >= this.filteredCount) {
-        this.showLoadMore = false
-      }
-    },
     "$store.state.returnItemsCount"() {
-      if (this.numOfElem >= this.$store.state.returnItemsCount) {
+      this.numOfElem = 100
+      if (this.numOfElem + 1 >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      } else {
+        this.showLoadMore = true
       }
     },
     "$store.state.chkDocuments"() {
