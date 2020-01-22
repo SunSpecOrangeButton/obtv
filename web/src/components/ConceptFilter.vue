@@ -37,8 +37,10 @@
                 <label for="process">
                     <input type="checkbox" id="dei" value="DEI" v-model="$store.state.chkDEI"/> DEI
                 </label>
-                Select entrypoint:
-                <b-form-select v-model="entryPointSelected" :options="entryPointList"></b-form-select>
+                <label for="entryPointSelector">
+                  <h1>Select entrypoint:</h1>
+                  <b-form-select v-model="entryPointSelected" :options="entryPointList" />
+                </label>
             </div>
             <div class="button-group">
                 <button type="button" class="btn btn-primary" @click="updateQuery">
