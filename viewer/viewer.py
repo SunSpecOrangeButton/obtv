@@ -197,13 +197,25 @@ def types():
 def entrypoints():
     """Flask Read Handler for entrypoints API endpoint"""
 
+    # TODO: This code is a workaround for an issue in solar-taxonomy (and perhaps pyoblib) that
+    # the Monitoring Entrypoint has not metadata.  Thus there is one extra entrypoint in the non-detailed
+    # list which must (at least until the next taxonomy release) be included.  After this occurs the code
+    # can be shortened to just use entrypoint_details.
     data = []
-    for item in tax.semantic.get_all_entrypoints(details=True)[1].items():
-        data.append({
-            "entrypoint": item[1].name,
-            "type": item[1].entrypoint_type.value,
-            "description": item[1].description
-        })
+    entrypoints, entrypoints_details = tax.semantic.get_all_entrypoints(details=True)
+    for entrypoint in entrypoints:
+        if entrypoint in entrypoints_details:
+            data.append({
+                "entrypoint": entrypoints_details[entrypoint].name,
+                "type": entrypoints_details[entrypoint].entrypoint_type.value,
+                "description": entrypoints_details[entrypoint].description
+            })
+        else:
+            data.append({
+                "entrypoint": entrypoint,
+                "type": "Documents",
+                "description": "None"
+            })
 
     return jsonify(data)
 

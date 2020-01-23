@@ -32,6 +32,10 @@ class TestViewer(TestCase):
         self.assertTrue("type" in data[0])
         self.assertTrue("description" in data[0])
 
+    def test_site_entrypoint_detail(self):
+        data = json.loads(viewer.entrypoint_detail("Site").data.decode('UTF-8'))
+        self.assertIsNotNone(data)
+
     def test_concepts(self):
 
         app = Flask(__name__)
