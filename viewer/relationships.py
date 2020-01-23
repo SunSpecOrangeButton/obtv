@@ -195,8 +195,13 @@ def subprocess(a, level, j):
         t = []
         for table in a.tables:
             data = []
+            i = 0
             for pk in table.pks:
-                data.append({"name": pk, "purpose": "PK"})
+                if table.pk_values_enum and table.pk_values_enum[i]:
+                    data.append({"name": pk, "purpose": "PK", "valuesenum": table.pk_values_enum[i]})
+                else:
+                    data.append({"name": pk, "purpose": "PK"})
+                i += 1
             for member in table.members:
                 if member.endswith("(A)"):
                     data.append({"name": member.replace("(A)", ""), "purpose": "Abstract"})

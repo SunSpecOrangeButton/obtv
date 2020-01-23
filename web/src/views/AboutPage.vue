@@ -13,51 +13,93 @@
 -->
 
 <template>
-    <div class="about">
-        <br/>
-        <br/>
-        <center>
-            <!-- <h1>About OB TV</h1> -->
-            <p>
-                <img src="@/assets/tv1.png" alt="OBTV"/>
-            </p>
-            <p>
-                The Orange Button Taxonomy Viewer allows for Orange Button Entrypoints, Concepts, Types, and Units to be
-                searched and displayed in a manner that is appropriate for either a non-technical business user or a
-                technical user who is not an XBRL Expert.
-            </p>
-            <p>
-                Currently the Orange Button Taxonomy Viewer is in an Under Development status and not all features are
-                available. It is not yet versioned.
-            </p>
-            <br/>
-            <br/>
-            <h1>Additional Reference Materials</h1>
-            <p>
-                The Concepts Page is still under design. Please enjoy the other pages.
-            </p>
-            <p>
-                In the meantime if you need to access Concepts please use the Taxonomy Data Element Reference:
-                <a
-                        href="http://orangebutton.io/wp-content/uploads/2019/09/Orange-Button-Data-Element-Reference.pdf"
-                        target="_blank">
-                    Link
-                </a>
-            </p>
-            <p>
-                If you are trying to find a view of Concept Relationships an experimental viewer is available:
-                <a
-                        href="http://localhost:5001"
-                        target="_blank">
-                    Link
-                </a>
-                <br/>
-                NOTE: Changes and features requests for this viewer are not necessarily possible to address
-                since it relies on third party technology outside of OBTV project control.
-                <br/>
-                Please send feedback on whether the experimental viewer is helpful or distracting.
-            </p>
-
-        </center>
-    </div>
+    <div class="about-container">
+            <hr />
+            <div class="about-logo">
+                <img src="@/assets/tv.png" alt="OBTV"/>
+            </div>
+            <hr />
+            <div class="about-text">
+                <p>
+                    Orange Button is an open data exchange standard for the distributed solar PV industry. Comprising
+                    information models, a standard taxonomy, a standard Application Program Interface (API), and supporting
+                    compliance test suites, Orange Button enables the free flow of data between information systems used in
+                    the solar asset lifecycle to decrease long term costs and increase innovation.
+                </p>
+                <p>
+                    Orange Button is powered by XBRL. XBRL is a global open data standard that renders information machine-readable
+                    and improves ability to communicate and exchange business information. These communications are defined by
+                    metadata set out in taxonomies, which define individual reporting concepts as well as the relationships
+                    between concepts and other semantic meaning.
+                </p>
+                <p>
+                    The Orange Button Taxonomy Viewer allows for searching and displaying Orange Button Entrypoints, Concepts, Types,
+                    and Units by non-XBRL Experts. XBRL Experts may prefer using XBRL desktop software such as
+                    the open source <a href="http://arelle.org/arelle/">Arelle</a> software which fully exposes the
+                    XBRL syntax.
+                </p>
+            </div>
+            <hr />
+            <div class="about-descriptions">
+                <p>
+                    <b>The following screens are available in OBTV:</b>
+                </p>
+                <p>
+                    <b>Entrypoints:</b>
+                    A taxonomy entry point identifies a subset (or "view") of a taxonomy. An entry point contains
+                    a set of concepts (concepts may be present in multiple entrypoints) grouped into Abstracts and
+                    Tables.
+                </p>
+                <p>
+                    <b>Concepts:</b>
+                    A taxonomy element that provides the meaning for a fact. For example, "Profit", "Turnover", and
+                    "Assets" would be typical concepts. Please note that although XBRL contains Abstract Concepts
+                    (concepts that do not have facts) they are not displayed as Concepts in OBTV (use XBRL Desktop
+                    Software to display instead) but rather indirectly reflected in the Entrypoint hierarchies in
+                    order to simplify concept display for business users.
+                </p>
+                <p>
+                    <b>Types:</b>
+                    Item Types may be a simple data type (String, Integer, ...) but also may also may be more specific
+                    (Monetary, Energy, ...) for various concepts. All concepts have an Item Type.
+                </p>
+                <p>
+                    <b>Units:</b>
+                    Units of measurement may be assigned to certain concepts. Units are required for certain numeric
+                    facts.  For example, monetary units must have an associated currency, such as US dollars (USD).
+                </p>
+                <p>
+                    <b>Glossary</b>
+                    Acronyms and Abbreviations used to shorten Orange Button Concepts.
+                </p>
+            </div>
+        </div>
 </template>
+
+<style>
+.about-container {
+  display: flex;
+  height: 75%;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 75px;
+}
+
+.about-logo {
+}
+
+.about-text {
+
+}
+
+.about-descriptions {
+
+}
+
+a {
+  color: #4285f4;
+}
+
+</style>

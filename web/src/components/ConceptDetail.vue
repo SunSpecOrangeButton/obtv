@@ -40,7 +40,19 @@
             </ul>
             Period: {{ apiData.period }} <br/>
             Nillable: {{ apiData.nillable }} <br/>
-            Calculations: {{ apiData.calculations }} <br/>
+            Calculations:
+            <ul>
+               <li v-for="item in apiData.calculations">
+                 {{ item }}
+               </li>
+            </ul>
+            Usages in Calculations:
+            <ul>
+               <li v-for="item in apiData.usages">
+                 {{ item }}
+               </li>
+            </ul>
+
         </form>
     </div>
 </template>

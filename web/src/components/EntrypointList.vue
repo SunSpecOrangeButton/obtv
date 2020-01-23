@@ -76,7 +76,7 @@ export default {
   beforeCreate() {
     this.$store.state.actvChk = false;
     this.$store.state.searchTerm = "";
-    this.$store.commit("callAPI", "entrypoints");
+    this.$store.commit("callAPI", "entrypoints/");
   },
   computed: {
     apiData() {
@@ -94,16 +94,20 @@ export default {
       let tableData = this.$store.state.apiData.filter( node => {
           return node.entrypoint.toLowerCase().includes(this.$store.state.searchTerm.toLowerCase()) &&
             ((node.type.toLowerCase()=="data" && this.$store.state.chkData) ||
-             (node.type.toLowerCase()=="document" && this.$store.state.chkDocuments) ||
+             (node.type.toLowerCase()=="documents" && this.$store.state.chkDocuments) ||
              (node.type.toLowerCase()=="process" && this.$store.state.chkProcess) ||
              (node.type.toLowerCase()=="data" && !this.$store.state.actvChk) ||
-             (node.type.toLowerCase()=="document" && !this.$store.state.actvChk) ||
+             (node.type.toLowerCase()=="documents" && !this.$store.state.actvChk) ||
              (node.type.toLowerCase()=="process" && !this.$store.state.actvChk))
       });
-      this.numOfElem = 100
-      this.showLoadMore = true
-      this.filteredCount = tableData.length;
-      this.$store.state.returnItemsCount = this.filteredCount;
+      this.$store.state.returnItemsCount = tableData.length;
+      
+      if (this.numOfElem + 1 >= this.$store.state.returnItemsCount) {
+        this.showLoadMore = false
+      } else {
+        this.showLoadMore = true
+      }
+
       return tableData;
     }
 
@@ -115,21 +119,20 @@ export default {
     },
     loadMore() {
       this.numOfElem += 100;
-      if (this.numOfElem >= this.$store.state.returnItemsCount
-          || this.numOfElem >= this.filteredCount) {
+      if (this.numOfElem + 1 >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      } else {
+        this.showLoadMore = true
       }
     }
   },
   watch: {
-    filteredCount() {
-      if (this.numOfElem >= this.filteredCount) {
-        this.showLoadMore = false
-      }
-    },
     "$store.state.returnItemsCount"() {
-      if (this.numOfElem >= this.$store.state.returnItemsCount) {
+      this.numOfElem = 100
+      if (this.numOfElem + 1 >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      } else {
+        this.showLoadMore = true
       }
     },
     "$store.state.chkDocuments"() {
@@ -217,7 +220,8 @@ ul {
   grid-row: 2 / 3;
   grid-column: 1 /2;
   width: 1163px;
-  //overflow-y: auto;
+  height: 100%;
+  overflow-y: auto;
 }
 
 a.nav-link {

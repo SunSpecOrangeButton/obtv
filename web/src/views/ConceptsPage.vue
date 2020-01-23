@@ -14,13 +14,6 @@
 
 <template>
     <div class="concept-search-container">
-        <!-- <div class="breadcrumbs">
-          <router-link to="/" class="nav-link">Home Page</router-link>/
-          <router-link to="/" class="nav-link disabled">Concept Search</router-link>
-        </div>-->
-        <div class="download-search-results">
-            <a href>Download Search Results</a>
-        </div>
         <div class="concept-count">
             <br/>
             <strong>{{ returnItemsCount }} Concepts</strong>
@@ -74,6 +67,7 @@ export default {
 .concept-search-body {
   grid-column: 4 / span 2;
   grid-row: 1 / span 2;
+  height: 100%;
 }
 
 .concept-detail-sidebar {
@@ -81,21 +75,10 @@ export default {
   grid-row: 2 / 3;
 }
 
-.breadcrumbs {
-  grid-column: 2 / span 3;
-  grid-row: 1 / 2;
-}
-
 .nav-link {
   display: inline;
   padding: 0;
   padding-right: 5px;
-}
-
-.download-search-results {
-  grid-column: 4 / 5;
-  grid-row: 1 / 2;
-  font-family: "Roboto Condensed";
 }
 
 #sort-by-button {

@@ -58,7 +58,7 @@ export default {
       this.$store.state.searchTerm = "";
       this.$store.commit("clearQueryString");
       this.$store.commit("clearGlossaryChks")
-      this.$store.commit("callAPI", "glossary");
+      this.$store.commit("callAPI", "glossary/");
     }
   }
 };

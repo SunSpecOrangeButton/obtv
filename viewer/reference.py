@@ -442,3 +442,14 @@ VALIDATION_RULES = {
     "LEI": "Value must be a 20 character LEI string"
 }
 
+
+TYPE_MAPPINGS = {
+    "dei": "DEI",
+    "num-us": "Numeric",
+    "num": "Numeric",
+    "solar-types": "Solar",
+    "nonnum": "Basic",
+    "us-types": "Basic",
+    "xbrli": "Basic"
+}
+
