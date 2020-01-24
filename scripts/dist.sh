@@ -1,7 +1,5 @@
 #! /bin/bash
 
-# Copyright 2019 SunSpec Alliance
-
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -14,7 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cd web
+rm -rf resources
+rm -rf dist
+rm -rf web-build
+mkdir resources
+cd viewer
+python3.7 generate_static_site.py
+cd ..
+cp -r web web-build
+cd web-build
+rm resources/*
+cp ../resources/* resources
+rm package-lock.json
+rm -rf node_modules
+npm install
 npm run-script build
 cd ..
-mv web/dist viewer/dist
+mv web-build/dist dist
+rm -rf resources
+#rm -rf web-build

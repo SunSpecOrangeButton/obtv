@@ -15,6 +15,14 @@ import Vuex from "vuex";
 import axios from "axios";
 import constants from "./constants.js";
 
+import entrypointsJson from '../resources/entrypoints.json'
+import conceptsJson from '../resources/concepts.json'
+import typesJson from '../resources/types.json'
+import unitsJson from '../resources/units.json'
+import referencesJson from '../resources/references.json'
+import entrypointsDetailsJson from '../resources/entrypoints-details.json'
+import conceptsDetailsJson from '../resources/concepts-details.json'
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -74,19 +82,43 @@ export default new Vuex.Store({
       state.apiData = [];
       state.returnItemsCount = 0;
       state.dataReady = false;
+
       if (process.env.JEST_WORKER_ID == undefined) {
           // Skip call during jest unit tests.  Please note that this is not elegant (using Mocks correctly
           // would be better) and hopefully improvements can be applied later.
 
-          axios
-              .get(state.apiURL + payload + "/", {
-              })
-              .then(response => {
-                state.apiLoading = false;
-                state.apiData = response.data;
-                state.returnItemsCount = response.data.length;
-                state.dataReady = true;
-              });
+               if (entrypointsJson.length > 0){
+                    // This will be encountered if the system was built with static pages (otherwise
+                     if (payload == "entrypoints") {
+                        state.apiData = entrypointsJson;
+                        state.returnItemsCount = entrypointsJson.length;
+                      } else if (payload == "concepts") {
+                        state.apiData = conceptsJson;
+                        state.returnItemsCount = conceptsJson.length;
+                      } else if (payload == "types") {
+                        state.apiData = typesJson;
+                        state.returnItemsCount = typesJson.length;
+                      } else if (payload == "units") {
+                        state.apiData = unitsJson;
+                        state.returnItemsCount = unitsJson.length;
+                      } else if (payload == "references") {
+                        state.apiData = referencesJson;
+                        state.returnItemsCount = referencesJson.length;
+                      }
+                      state.apiLoading = false;
+                      state.dataReady = true;
+               } else {
+                  // This version calls the web service interface.
+                  axios
+                      .get(state.apiURL + payload + "/", {
+                      })
+                      .then(response => {
+                        state.apiLoading = false;
+                        state.apiData = response.data;
+                        state.returnItemsCount = response.data.length;
+                        state.dataReady = true;
+                      });
+              }
        } else {
             var data = JSON.parse(process.env.TEST_JSON);
             state.apiLoading = false;
@@ -102,18 +134,31 @@ export default new Vuex.Store({
       state.apiDetailLoading = true;
       state.apiDetailData = {};
       state.detailDataReady = false;
+
       if (process.env.JEST_WORKER_ID == undefined) {
           // Skip call during jest unit tests.  Please note that this is not elegant (using Mocks correctly
           // would be better) and hopefully improvements can be applied later.
 
-          axios
-              .get(state.apiURL + payload[0] + "/" + payload[1] + "/" + payload[2], {
-              })
-              .then(response => {
+            if (entrypointsJson.length > 0){
+                // This will be encountered if the system was built with static pages (otherwise
                 state.apiDetailLoading = false;
-                state.apiDetailData = response.data;
+                if (payload[0] == "entrypointdetail") {
+                  state.apiDetailData = entrypointsDetailsJson[payload[1]];
+                } else {
+                  state.apiDetailData = conceptsDetailsJson[payload[1]];
+                }
                 state.dataReady = true;
-              });
+             } else {
+                // This version calls the web service interface.
+                axios
+                     .get(state.apiURL + payload[0] + "/" + payload[1] + "/" + payload[2], {
+                     })
+                     .then(response => {
+                       state.apiDetailLoading = false;
+                       state.apiDetailData = response.data;
+                       state.dataReady = true;
+                     });
+            }
        } else {
             var data = JSON.parse(process.env.TEST_JSON);
             state.apiDetailLoading = false;
