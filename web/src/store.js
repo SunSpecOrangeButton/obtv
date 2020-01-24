@@ -110,7 +110,7 @@ export default new Vuex.Store({
                } else {
                   // This version calls the web service interface.
                   axios
-                      .get(state.apiURL + payload + "/", {
+                      .get(state.apiURL + payload, {
                       })
                       .then(response => {
                         state.apiLoading = false;
@@ -119,6 +119,15 @@ export default new Vuex.Store({
                         state.dataReady = true;
                       });
               }
+          axios
+              .get(state.apiURL + payload, {
+              })
+              .then(response => {
+                state.apiLoading = false;
+                state.apiData = response.data;
+                state.returnItemsCount = response.data.length;
+                state.dataReady = true;
+              });
        } else {
             var data = JSON.parse(process.env.TEST_JSON);
             state.apiLoading = false;
@@ -198,7 +207,7 @@ export default new Vuex.Store({
       state.chkSI = false;
       state.chkNonSI = false;
     },
-    clearReferencesChks(state) {
+    clearGlossaryChks(state) {
       state.chkAcronym = false;
       state.chkAbbreviation = false;
     }

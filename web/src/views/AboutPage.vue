@@ -14,9 +14,11 @@
 
 <template>
     <div class="about-container">
+            <hr />
             <div class="about-logo">
                 <img src="@/assets/tv.png" alt="OBTV"/>
             </div>
+            <hr />
             <div class="about-text">
                 <p>
                     Orange Button is an open data exchange standard for the distributed solar PV industry. Comprising
@@ -37,6 +39,7 @@
                     XBRL syntax.
                 </p>
             </div>
+            <hr />
             <div class="about-descriptions">
                 <p>
                     <b>The following screens are available in OBTV:</b>
@@ -73,32 +76,26 @@
         </div>
 </template>
 
-<style scoped>
+<style>
 .about-container {
-  margin-top: 20px;
-  display: grid;
-  #grid-template-columns: 0px 250px 15px auto 25px;
-  #grid-template-rows: 250px auto;
+  display: flex;
   height: 75%;
   width: 90%;
-  margin: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 75px;
 }
 
 .about-logo {
-  grid-column: 1 / 1;
-  grid-row: 1 / 1;
-  width: 50%;
-  margin: auto;
 }
 
 .about-text {
-  grid-column: 1 / 1;
-  grid-row: 2 / 2;
+
 }
 
 .about-descriptions {
-  grid-column: 1 / 1;
-  grid-row: 3 / 3;
+
 }
 
 a {

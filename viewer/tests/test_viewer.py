@@ -36,7 +36,7 @@ class TestViewer(TestCase):
 
         app = Flask(__name__)
         app.config['TESTING'] = True
-        data = json.loads(viewer.concepts().data.decode('UTF-8'))
+        data = json.loads(viewer.concepts("none").data.decode('UTF-8'))
         self.assertEqual(3404, len(data))
         self.assertTrue("name" in data[0])
         self.assertTrue("taxonomy" in data[0])
@@ -61,8 +61,8 @@ class TestViewer(TestCase):
         self.assertTrue("standard" in data[0])
         self.assertTrue("definition" in data[0])
 
-    def test_references(self):
-        data = json.loads(viewer.references().data.decode('UTF-8'))
+    def test_glossary(self):
+        data = json.loads(viewer.glossary().data.decode('UTF-8'))
         self.assertEqual(305, len(data))
         self.assertTrue("type" in data[0])
         self.assertTrue("code" in data[0])

@@ -12,9 +12,9 @@
 
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
-import ReferencesPage from "@/views/ReferencesPage.vue";
-import ReferenceFilter from "@/components/ReferenceFilter.vue"
-import ReferenceList from "@/components/ReferenceList.vue"
+import GlossaryPage from "@/views/GlossaryPage.vue";
+import GlossaryFilter from "@/components/GlossaryFilter.vue"
+import GlossaryList from "@/components/GlossaryList.vue"
 import store from "@/store.js"
 
 const localVue = createLocalVue();
@@ -25,30 +25,30 @@ process.env.TEST_JSON = `[
     {"type": "Abbreviation", "code": "Qualif", "definition": "Qualifications"}
 ]`;
 
-describe('ReferencesPage', () => {
+describe('GlossaryPage', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(ReferencesPage, { store, localVue });
-    expect(wrapper.html()).toContain('References');
+    const wrapper = shallowMount(GlossaryPage, { store, localVue });
+    expect(wrapper.html()).toContain('Download Search Results');
   });
 
   it('sets the computed count correctly', () => {
-    const wrapper = shallowMount(ReferencesPage, {store, localVue});
+    const wrapper = shallowMount(GlossaryPage, {store, localVue});
     wrapper.vm.$store.state.returnItemsCount = 10;
     expect(wrapper.vm.returnItemsCount).toBe(10);
   });
 
 });
 
-describe('ReferenceFilter', () => {
+describe('GlossaryFilter', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(ReferenceFilter, {store, localVue});
+    const wrapper = shallowMount(GlossaryFilter, {store, localVue});
     expect(wrapper.html()).toContain('Acronym');
   });
 
   it('clears all filters on clearFilters()', () => {
-    const wrapper = shallowMount(ReferenceFilter, {store, localVue});
+    const wrapper = shallowMount(GlossaryFilter, {store, localVue});
     wrapper.vm.clearFilters();
     console.log(wrapper.vm.$store.state.chkAcronym)
     console.log(wrapper.vm.$store.state.chkAbbreviation)
@@ -59,15 +59,15 @@ describe('ReferenceFilter', () => {
    });
 });
 
-describe('ReferenceList', () => {
+describe('GlossaryList', () => {
 
   it('renders a correct markup clip', () => {
-    const wrapper = shallowMount(ReferenceList, {store, localVue});
-    expect(wrapper.html()).toContain('reference-public-list-container');
+    const wrapper = shallowMount(GlossaryList, {store, localVue});
+    expect(wrapper.html()).toContain('glossary-public-list-container');
   });
 
   it('loads the mock JSON correctly', () => {
-    const wrapper = shallowMount(ReferenceList, {store, localVue});
+    const wrapper = shallowMount(GlossaryList, {store, localVue});
     expect(wrapper.vm.$store.state.returnItemsCount).toBe(2);
     expect(wrapper.vm.$store.state.apiData[0]["type"]).toBe("Acronym");
     expect(wrapper.vm.$store.state.apiData[0]["code"]).toBe("PPA");

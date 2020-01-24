@@ -13,28 +13,28 @@
 -->
 
 <template>
-    <div class="reference-search-container">
-        <div class="reference-count">
+    <div class="glossary-search-container">
+        <div class="glossary-count">
             <br/>
-            <strong>{{ returnItemsCount }} References</strong>
+            <strong>{{ returnItemsCount }} Glossary Items</strong>
         </div>
-        <div class="reference-search-sidebar">
-            <component-reference-filter></component-reference-filter>
+        <div class="glossary-search-sidebar">
+            <component-glossary-filter></component-glossary-filter>
         </div>
-        <div class="reference-search-body">
-            <component-reference-list></component-reference-list>
+        <div class="glossary-search-body">
+            <component-glossary-list></component-glossary-list>
         </div>
     </div>
 </template>
 
 
 <script>
-import ReferenceFilter from "../components/ReferenceFilter.vue";
-import ReferenceList from "../components/ReferenceList.vue";
+import GlossaryFilter from "../components/GlossaryFilter.vue";
+import GlossaryList from "../components/GlossaryList.vue";
 export default {
   components: {
-    "component-reference-list": ReferenceList,
-    "component-reference-filter": ReferenceFilter
+    "component-glossary-list": GlossaryList,
+    "component-glossary-filter": GlossaryFilter
   },
   computed: {
     returnItemsCount() {
@@ -49,19 +49,19 @@ export default {
 
 
 <style scoped>
-.reference-search-container {
+.glossary-search-container {
   margin-top: 20px;
   display: grid;
   grid-template-columns: 0px 250px 15px auto 25px;
   grid-template-rows: 25px auto;
 }
 
-.reference-search-sidebar {
+.glossary-search-sidebar {
   grid-column: 2 / 3;
   grid-row: 1 / 3;
 }
 
-.reference-search-body {
+.glossary-search-body {
   grid-column: 4 / span 2;
   grid-row: 1 / span 2;
 }
@@ -76,7 +76,7 @@ export default {
   float: right;
 }
 
-.reference-count {
+.glossary-count {
   grid-column: 4 / 5;
   grid-row: 1 / 2;
   font-family: "Roboto Condensed";

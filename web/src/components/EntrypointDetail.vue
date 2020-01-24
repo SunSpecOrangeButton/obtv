@@ -13,7 +13,7 @@
 -->
 
 <template>
-     <div class="public-filter">
+     <div class="entrypoint-detail-container">
          <entrypoint-child v-bind:abstract="apiData" v-bind:key="apiData.name"></entrypoint-child>
     </div>
 </template>
@@ -67,9 +67,11 @@ h2 {
   font-weight: bold;
 }
 
-.public-filter {
+.entrypoint-detail-container {
   padding-left: 20px;
   padding-top: 5px;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .form-group {

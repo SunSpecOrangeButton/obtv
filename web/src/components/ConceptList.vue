@@ -46,7 +46,6 @@
 </template>
 
 <script>
-
 export default {
   props: ["admin_page"],
   data() {
@@ -84,7 +83,7 @@ export default {
   beforeCreate() {
     this.$store.state.actvChk = false;
     this.$store.state.searchTerm = "";
-    this.$store.commit("callAPI", "concepts");
+    this.$store.commit("callAPI", "concepts/none");
   },
   computed: {
     apiData() {
@@ -108,10 +107,14 @@ export default {
              (node.taxonomy.toLowerCase()=="us-gaap" && !this.$store.state.actvChk) ||
              (node.taxonomy.toLowerCase()=="dei" && !this.$store.state.actvChk))
       });
-      this.numOfElem = 100
-      this.showLoadMore = true
-      this.filteredCount = tableData.length;
-      this.$store.state.returnItemsCount = this.filteredCount;
+      this.$store.state.returnItemsCount = tableData.length;
+      
+      if (this.numOfElem + 1 >= this.$store.state.returnItemsCount) {
+        this.showLoadMore = false
+      } else {
+        this.showLoadMore = true
+      }
+
       return tableData;
     }
   },
@@ -122,21 +125,20 @@ export default {
     },
     loadMore() {
       this.numOfElem += 100;
-      if (this.numOfElem >= this.$store.state.returnItemsCount
-          || this.numOfElem >= this.filteredCount) {
+      if (this.numOfElem + 1 >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      } else {
+        this.showLoadMore = true
       }
     }
   },
   watch: {
-    filteredCount() {
-      if (this.numOfElem >= this.filteredCount) {
-        this.showLoadMore = false
-      }
-    },
     "$store.state.returnItemsCount"() {
-      if (this.numOfElem >= this.$store.state.returnItemsCount) {
+      this.numOfElem = 100
+      if (this.numOfElem + 1 >= this.$store.state.returnItemsCount) {
         this.showLoadMore = false
+      } else {
+        this.showLoadMore = true
       }
     },
     "$store.state.chkSolar"() {
@@ -176,6 +178,7 @@ export default {
   height: 100%;
   padding-top: 5px;
   width: 1163px;
+  overflow-y: auto;
 }
 
 li {
@@ -224,7 +227,6 @@ ul {
   grid-row: 2 / 3;
   grid-column: 1 /2;
   width: 1163px;
-  //overflow-y: auto;
 }
 
 a.nav-link {

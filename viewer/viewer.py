@@ -87,25 +87,46 @@ def exception(e):
         return response
 
 
-@app.route('/concepts/', methods=['GET'])
-def concepts():
+@app.route('/concepts/<entrypoint>', methods=['GET'])
+def concepts(entrypoint):
     """Flask Read Handler for concepts API Endpoint"""
 
-    data = []
-    for concept in tax.semantic.get_all_concepts(details=True):
-        details = tax.semantic.get_concept_details(concept)
-        if not details.abstract:
-            t = "SOLAR"
-            if details.id.startswith("us-gaap:"):
-                t = "US-GAAP"
-            elif details.id.startswith("dei:"):
-                t = "DEI"
-            data.append({
-                "name": details.name,
-                "taxonomy": t,
-                "itemtype": details.type_name.split(":")[1].replace("ItemType", ""),
-                "period": details.period_type.value
-            })
+    if entrypoint == "none":
+        data = []
+        for concept in tax.semantic.get_all_concepts(details=True):
+            details = tax.semantic.get_concept_details(concept)
+            if not details.abstract:
+                t = "SOLAR"
+                if details.id.startswith("us-gaap:"):
+                    t = "US-GAAP"
+                elif details.id.startswith("dei:"):
+                    t = "DEI"
+                data.append({
+                    "name": details.name,
+                    "taxonomy": t,
+                    "itemtype": details.type_name.split(":")[1].replace("ItemType", ""),
+                    "period": details.period_type.value
+                })
+    else:
+        data = []
+        entrypoint_concepts = []
+        for concept in tax.semantic.get_entrypoint_concepts(entrypoint):
+            entrypoint_concepts.append(concept)
+        for concept in tax.semantic.get_all_concepts(details=True):
+            if concept in entrypoint_concepts:
+                details = tax.semantic.get_concept_details(concept)
+                if not details.abstract:
+                    t = "SOLAR"
+                    if details.id.startswith("us-gaap:"):
+                        t = "US-GAAP"
+                    elif details.id.startswith("dei:"):
+                        t = "DEI"
+                    data.append({
+                        "name": details.name,
+                        "taxonomy": t,
+                        "itemtype": details.type_name.split(":")[1].replace("ItemType", ""),
+                        "period": details.period_type.value
+                    })
 
     return jsonify(data)
 
@@ -187,9 +208,9 @@ def entrypoints():
     return jsonify(data)
 
 
-@app.route('/references/', methods=['GET'])
-def references():
-    """Flask Read Handler for types API Endpoint"""
+@app.route('/glossary/', methods=['GET'])
+def glossary():
+    """Flask Read Handler for glossary API Endpoint"""
 
     data = []
     for item in reference.ACRONYMS.items():

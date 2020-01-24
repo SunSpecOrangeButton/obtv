@@ -26,7 +26,7 @@
                 />
             </div>
 
-            <h1>References Type</h1>
+            <h1>Glossary Items Type</h1>
             <div class="form-group">
                 <label for="acronym">
                     <input type="checkbox" id="acronym" value="Acronym" v-model="$store.state.chkAcronym"/> Acronym
@@ -57,8 +57,8 @@ export default {
       this.$store.commit("toggleAPILoading");
       this.$store.state.searchTerm = "";
       this.$store.commit("clearQueryString");
-      this.$store.commit("clearReferencesChks")
-      this.$store.commit("callAPI", "references");
+      this.$store.commit("clearGlossaryChks")
+      this.$store.commit("callAPI", "glossary/");
     }
   }
 };
