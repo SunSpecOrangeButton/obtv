@@ -29,7 +29,7 @@ describe('GlossaryPage', () => {
 
   it('renders a correct markup clip', () => {
     const wrapper = shallowMount(GlossaryPage, { store, localVue });
-    expect(wrapper.html()).toContain('Download Search Results');
+    expect(wrapper.html()).toContain('Glossary Items');
   });
 
   it('sets the computed count correctly', () => {

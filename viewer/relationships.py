@@ -28,6 +28,7 @@ class Child(object):
 class Table(object):
 
     name: str
+    link: str
     pks: List[str]
     pk_values_enum: List[List[str]]
     members: List[str]
@@ -92,16 +93,10 @@ def table_relationships(entrypoint, abstracts):
             for item in abstracts.items():
                 if item[1].tables:
                     for table in item[1].tables:
-                        # TODO: Fix brittle code which assumes that LineItems and Table name is always identically prefixed
-                        # This is the cause of the warning: "Warning - parent/child relationship not found"
-                        if table.name == f.replace("LineItems", ""):
+                        if table.link == f.replace("LineItems", ""):
                             parent = table
                             break
 
-                        # for member in table.members:
-                        #     if member == f.replace("LineItems", ""):
-                        #         parent = table
-                        #         break
             for item in abstracts.items():
                 if item[1].name == t.replace("Abstract", ""):
                     child = item[1]
@@ -163,7 +158,7 @@ def create_abstracts(entrypoint):
         elif r.role.value == "all":
             if last_abstract.tables == None:
                 last_abstract.tables = []
-            last_table = Table(t.replace("Table", ""), [], None, [], None)
+            last_table = Table(t.replace("Table", ""), f.replace("LineItems", ""), [], None, [], None)
             last_abstract.tables.append(last_table)
             pk_count = -1
         elif r.role.value == "dimension-domain":
