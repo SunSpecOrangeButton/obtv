@@ -17,5 +17,6 @@ module.exports = {
     disableHostCheck: true,
     public: ""
   },
+  publicPath: "/orange-button-taxonomy-viewer/",
   lintOnSave: false
 };

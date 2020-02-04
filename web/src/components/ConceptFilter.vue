@@ -39,7 +39,7 @@
                 </label>
                 <label for="entryPointSelector">
                   <h1>Select entrypoint:</h1>
-                  <b-form-select v-model="entryPointSelected" :options="entryPointList" />
+                  <b-form-select v-model="entryPointSelected" :options="$store.state.entryPointList" />
                 </label>
             </div>
             <div class="button-group">
@@ -60,20 +60,11 @@ import axios from "axios";
 export default {
   data() {
     return {
-      entryPointList: [],
       entryPointSelected: ''
     }
   },
   beforeCreate() {
-    axios
-    .get(this.$store.state.apiURL + "entrypoints/", {
-    })
-    .then(response => {
-      let entrypoint_data = response.data;
-      for (let i in entrypoint_data) {
-        this.entryPointList.push(entrypoint_data[i]["entrypoint"])
-      }
-    });
+      this.$store.commit("callAPIentrypoints");
   },
   methods: {
     updateQuery() {

@@ -32,7 +32,7 @@ with app.app_context():
                 pass
         outfile.write(json.dumps(data))
 
-    data = viewer.concepts().data.decode('UTF-8')
+    data = viewer.concepts("none").data.decode('UTF-8')
     with open("../resources/concepts.json", "w") as outfile:
         outfile.write(data)
 
@@ -51,6 +51,6 @@ with app.app_context():
     with open("../resources/units.json", "w") as outfile:
         outfile.write(data)
 
-    data = viewer.references().data.decode('UTF-8')
+    data = viewer.glossary().data.decode('UTF-8')
     with open("../resources/references.json", "w") as outfile:
         outfile.write(data)

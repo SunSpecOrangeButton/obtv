@@ -28,6 +28,7 @@ rm -rf node_modules
 npm install
 npm run-script build
 cd ..
-mv web-build/dist dist
+mkdir dist
+mv web-build/dist dist/orange-button-taxonomy-viewer
 rm -rf resources
-#rm -rf web-build
+rm -rf web-build
