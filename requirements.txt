@@ -1,5 +1,5 @@
 oblib
-flask
+flask==1.0.4
 flask_cors
 flask_testing
 pytest
