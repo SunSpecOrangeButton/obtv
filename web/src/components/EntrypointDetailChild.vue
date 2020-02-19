@@ -75,10 +75,6 @@ export default {
   margin-bottom: 3px;
 }
 
-.search-icon {
-  color: #4285f4;
-  margin-bottom: 3px;
-}
 h1 {
   font-size: 18px;
   color: #4b4e52;
@@ -99,12 +95,6 @@ h2 {
   overflow-wrap: break-word;
 }
 
-.form-group {
-  font-family: "Roboto Condensed";
-
-  display: block;
-}
-
 button {
   margin: 5px;
   margin-bottom: 15px;
@@ -114,36 +104,9 @@ label {
   display: block;
 }
 
-.button-group {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5px;
-  margin-left: -17px;
-}
-
-.btn-primary,
-.btn-primary:active,
-.btn-primary:visited,
-.btn-primary:focus,
-.btn-primary:disabled {
-  background-color: white;
-  border-color: #4b4e52;
-  color: #4b4e52;
-}
-
-.btn-primary:hover {
-  background-color: #eeeeee;
-  color: #4b4e52;
-  border-color: #4b4e52;
-}
-
 label {
   margin-top: 3px;
   margin-bottom: 3px;
-}
-
-#keyword_search {
-  width: 214px;
 }
 
 ul.a {

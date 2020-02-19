@@ -77,16 +77,6 @@ export default {
   grid-row: 2 / 3;
 }
 
-.nav-link {
-  display: inline;
-  padding: 0;
-  padding-right: 5px;
-}
-
-#sort-by-button {
-  float: right;
-}
-
 .entrypoint-count {
   grid-column: 4 / 5;
   grid-row: 1 / 2;

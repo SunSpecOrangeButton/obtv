@@ -65,16 +65,6 @@ export default {
   grid-row: 1 / span 2;
 }
 
-.nav-link {
-  display: inline;
-  padding: 0;
-  padding-right: 5px;
-}
-
-#sort-by-button {
-  float: right;
-}
-
 .type-count {
   grid-column: 4 / 5;
   grid-row: 1 / 2;

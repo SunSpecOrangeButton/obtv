@@ -48,10 +48,6 @@ html {
   grid-template-rows: 70px 0px 1000px 10px 60px;
 }
 
-#footer {
-  grid-row: 5 / 6;
-}
-
 #router-v {
   grid-row: 3 / 4;
 }
