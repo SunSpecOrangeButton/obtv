@@ -15,15 +15,17 @@
 <template>
     <div class="public-filter">
         <form @submit.prevent>
-            <h1>Keyword</h1>
             <div class="form-group">
-                <input
-                        type="text"
-                        class="form-control"
-                        id="keyword_search"
-                        v-model="$store.state.searchTerm"
-                        @keyup.enter="updateQuery"
-                />
+                <label for="keyword_search">
+                    <h1>Keyword</h1>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="keyword_search"
+                            v-model="$store.state.searchTerm"
+                            @keyup.enter="updateQuery"
+                    />
+                </label>
             </div>
 
             <h1>Entrypoint Type</h1>
@@ -32,7 +34,7 @@
                     <input type="checkbox" id="data" value="Data" v-model="$store.state.chkData"/> Data
                 </label>
                 <label for="documents">
-                    <input type="checkbox" id="document" value="Documents" v-model="$store.state.chkDocuments"/> Documents
+                    <input type="checkbox" id="documents" value="Documents" v-model="$store.state.chkDocuments"/> Documents
                 </label>
                 <label for="process">
                     <input type="checkbox" id="Process" value="Process" v-model="$store.state.chkProcess"/> Process

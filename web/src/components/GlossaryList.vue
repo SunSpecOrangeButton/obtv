@@ -33,7 +33,7 @@
                 </template>
             </b-table>
             <div class="load-more-btn-container" v-if="!apiLoading">
-              <b-button variant="primary" @click="loadMore" v-if="showLoadMore">Load more</b-button>
+              <b-button @click="loadMore" v-if="showLoadMore">Load more</b-button>
             </div>
         </div>
     </div>
@@ -149,9 +149,6 @@ export default {
 </script>
 
 <style>
-.btn {
-  margin: 5px;
-}
 .glossary-public-list-container {
   display: grid;
   grid-template-rows: 20px 720px 50px;

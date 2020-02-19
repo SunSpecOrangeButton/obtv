@@ -15,15 +15,17 @@
 <template>
     <div class="public-filter">
         <form @submit.prevent>
-            <h1>Keyword</h1>
             <div class="form-group">
-                <input
-                        type="text"
-                        class="form-control"
-                        id="keyword_search"
-                        v-model="$store.state.searchTerm"
-                        @keyup.enter="updateQuery"
-                />
+                <label for="keyword_search">
+                    <h1>Keyword</h1>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="keyword_search"
+                            v-model="$store.state.searchTerm"
+                            @keyup.enter="updateQuery"
+                    />
+                </label>
             </div>
 
             <h1>Unit Type</h1>

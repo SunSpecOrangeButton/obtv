@@ -15,7 +15,7 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-light navbar-custom">
         <router-link to="entrypoints" class="navbar-brand">
-            <img id="oblogo" src="@/assets/ob.png"/>
+            <img id="oblogo" src="@/assets/ob.png" alt="Orange Button"/>
             <h1 class="app-title">Orange Button Taxonomy Viewer</h1>
         </router-link>
         <ul class="navbar-nav ml-auto">

@@ -15,31 +15,33 @@
 <template>
     <div class="public-filter">
         <form @submit.prevent>
-            <h1>Keyword</h1>
             <div class="form-group">
-                <input
-                        type="text"
-                        class="form-control"
-                        id="keyword_search"
-                        v-model="$store.state.searchTerm"
-                        @keyup.enter="updateQuery"
-                />
+                <label for="keyword_search">
+                    <h1>Keyword</h1>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="keyword_search"
+                            v-model="$store.state.searchTerm"
+                            @keyup.enter="updateQuery"
+                    />
+                </label>
             </div>
 
             <h1>Concept Type</h1>
             <div class="form-group">
-                <label for="data">
+                <label for="solar">
                     <input type="checkbox" id="solar" value="Solar" v-model="$store.state.chkSolar"/> Solar
                 </label>
-                <label for="documents">
+                <label for="usgaap">
                     <input type="checkbox" id="usgaap" value="USGaap" v-model="$store.state.chkUSGaap"/> US-Gaap
                 </label>
-                <label for="process">
+                <label for="dei">
                     <input type="checkbox" id="dei" value="DEI" v-model="$store.state.chkDEI"/> DEI
                 </label>
                 <label for="entryPointSelector">
                   <h1>Select entrypoint:</h1>
-                  <b-form-select v-model="entryPointSelected" :options="$store.state.entryPointList" />
+                  <b-form-select id="entryPointSelector" v-model="entryPointSelected" :options="$store.state.entryPointList" />
                 </label>
             </div>
             <div class="button-group">

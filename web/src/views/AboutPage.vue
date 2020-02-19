@@ -76,7 +76,7 @@
         </div>
 </template>
 
-<style>
+<style scoped>
 .about-container {
   display: flex;
   height: 75%;
@@ -99,7 +99,7 @@
 }
 
 a {
-  color: #4285f4;
+  color: blue;
 }
 
 </style>

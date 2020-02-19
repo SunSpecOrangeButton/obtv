@@ -13,7 +13,7 @@
 -->
 
 <template>
-    <div id="app">
+    <div id="app" role="main">
         <Navbar id="navbar"></Navbar>
         <router-view id="router-v"/>
         <!-- <Footer id="footer"></Footer> -->
