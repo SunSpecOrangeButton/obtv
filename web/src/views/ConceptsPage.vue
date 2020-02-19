@@ -78,11 +78,13 @@ export default {
   grid-row: 2 / 3;
 }
 
-
 .concept-count {
-  grid-column: 4 / 5;
-  grid-row: 1 / 2;
-  font-family: "Roboto Condensed";
+    grid-column:  2 / 3;
+    grid-row: 1 / 3;
+    place-self: start;
+    justify-self: center;
+    padding-top: 340px;
+    font-weight: bold;
 }
 
 a {

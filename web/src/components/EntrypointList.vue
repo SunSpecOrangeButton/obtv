@@ -168,7 +168,7 @@ export default {
 }
 .entrypoint-public-list-container {
   display: grid;
-  grid-template-rows: 50px 720px 50px;
+  grid-template-rows: 20px 720px 50px;
   grid-template-columns: auto;
   height: 100%;
   padding-top: 5px;
