@@ -225,14 +225,14 @@ def glossary():
     """Flask Read Handler for glossary API Endpoint"""
 
     data = []
-    for item in reference.ACRONYMS.items():
+    for item in sorted(reference.ACRONYMS.items()):
         data.append({
             "type": "Acronym",
             "code": item[1],
             "definition": item[0]
         })
 
-    for item in reference.ABBREVIATIONS.items():
+    for item in sorted(reference.ABBREVIATIONS.items()):
         data.append({
             "type": "Abbreviation",
             "code": item[1],
