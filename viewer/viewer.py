@@ -29,7 +29,7 @@ import re
 import werkzeug
 from oblib import taxonomy
 from flask import Flask, make_response, jsonify
-from flask_cors import CORS
+#from flask_cors import CORS
 
 RETURN_INDEX = "<h2><a href='/html'>Return to search page</a></h2>"
 tax = None
@@ -42,7 +42,7 @@ def convert(name):
 """Main Code - Start Flask"""
 tax = taxonomy.Taxonomy()
 app = Flask(__name__, static_url_path='', static_folder='dist')
-CORS(app)
+#CORS(app)
 app.logger.setLevel(20)
 app.logger.info("Initialization completed")
 """End of Main Code"""
@@ -110,9 +110,9 @@ def concepts(entrypoint):
     else:
         data = []
         entrypoint_concepts = []
-        for concept in tax.semantic.get_entrypoint_concepts(entrypoint):
+        for concept in tax.semantic.get_entrypoint_concepts(entrypoint).sort():
             entrypoint_concepts.append(concept)
-        for concept in tax.semantic.get_all_concepts(details=True):
+        for concept in tax.semantic.get_all_concepts(details=True).sort():
             if concept in entrypoint_concepts:
                 details = tax.semantic.get_concept_details(concept)
                 if not details.abstract:
@@ -190,7 +190,7 @@ def types():
                 "definition": ""
             })
 
-    return jsonify(data)
+    return jsonify(sorted(data, key=lambda x: x["code"].lower()))
 
 
 @app.route('/entrypoints/', methods=['GET'])
@@ -217,7 +217,7 @@ def entrypoints():
                 "description": "None"
             })
 
-    return jsonify(data)
+    return jsonify(sorted(data, key=lambda x: x["entrypoint"]))
 
 
 @app.route('/glossary/', methods=['GET'])
