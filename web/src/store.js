@@ -194,7 +194,7 @@ export default new Vuex.Store({
             if (entrypointsJson.length > 0){
                 // This will be encountered if the system was built with static pages (otherwise
                   let entrypoint_data = entrypointsJson;
-                  for (let i in [...Set(entrypoint_data)]) {     // Use set to remove dups
+                  for (let i in [...new Set(entrypoint_data)]) {     // Use set to remove dups
                     state.entryPointList.push(entrypoint_data[i]["entrypoint"])
                   }
 
