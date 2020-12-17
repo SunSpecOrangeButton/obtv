@@ -12,16 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-rm -rf dist
-rm -rf web-build
-cp -r web web-build
-cd web-build
-rm package-lock.json
-rm -rf node_modules
-npm install
-npm run-script build
+rm web/resources/*
+cd prep
+python3.8 generate_static_site.py
 cd ..
-mkdir dist
-mv web-build/dist dist/orange-button-taxonomy-viewer
-rm -rf resources
-rm -rf web-build

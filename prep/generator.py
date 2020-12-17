@@ -11,85 +11,27 @@
 # limitations under the License.
 
 """
-This program implements the Orange Button Viewer.  The Orange Button Viewer provides full information on the Orange Button data structures
-in an easy to use format that does not require XBRL experience.
-
-Use the following comand to start the Viewer.
-
-    $ pip install Flask
-    $ FLASK_APP=viewer.py flask run
+This allows OBTV to be generated for the Vue.js code.  The data is generated from pyoblib and the output
+is in Python lists/dictionaries that can be externalized to JSON.
 """
 
 import reference
 import relationships
 
-import json
 import re
 
-import werkzeug
 from oblib import taxonomy
-from flask import Flask, make_response, jsonify
-#from flask_cors import CORS
+from flask import jsonify
 
-RETURN_INDEX = "<h2><a href='/html'>Return to search page</a></h2>"
-tax = None
+tax = taxonomy.Taxonomy()
 
 def convert(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1 \2', name)
     return re.sub('([a-z0-9])([A-Z])', r'\1 \2', s1)
 
 
-"""Main Code - Start Flask"""
-tax = taxonomy.Taxonomy()
-app = Flask(__name__, static_url_path='', static_folder='dist')
-#CORS(app)
-app.logger.setLevel(20)
-app.logger.info("Initialization completed")
-"""End of Main Code"""
-
-
-@app.errorhandler(Exception)
-def exception(e):
-    """
-    Handle All Exceptions here - typically Exceptions are program logic issues so there is little that can
-    be returend other than an internal error has occured.  It is possible that the issue is a bad key passsed
-    from the client side (KeyError) or some sort of HTTPException as well and these will be reflected.
-    """
-
-    app.logger.error(e)
-
-    if isinstance(e, KeyError):
-        response = make_response()
-        response.data = json.dumps({
-            "code": 404,
-            "name": "404 Not Found",
-            "description": str(e)
-        })
-        response.content_type = "application/json"
-        return response
-    elif isinstance(e, werkzeug.exceptions.HTTPException):
-        response = e.get_response()
-        response.data = json.dumps({
-            "code": e.code,
-            "name": e.name,
-            "description": e.description,
-        })
-        response.content_type = "application/json"
-        return response
-    else:
-        response = make_response()
-        response.data = json.dumps({
-            "code": 500,
-            "name": "500 Internal Server Error",
-            "description": "An internal issue with the software occurred",
-        })
-        response.content_type = "application/json"
-        return response
-
-
-@app.route('/concepts/<entrypoint>', methods=['GET'])
 def concepts(entrypoint):
-    """Flask Read Handler for concepts API Endpoint"""
+    """Generates concepts data"""
 
     if entrypoint == "none":
         data = []
@@ -128,12 +70,11 @@ def concepts(entrypoint):
                         "period": details.period_type.value
                     })
 
-    return jsonify(data)
+    return data
 
 
-@app.route('/units/', methods=['GET'])
 def units():
-    """Flask Read Handler for units API Endpoint"""
+    """Generates units data"""
 
     data = []
     for unit in tax.units.get_all_units():
@@ -148,12 +89,11 @@ def units():
             "definition": details.definition
         })
 
-    return jsonify(data)
+    return data
 
 
-@app.route('/types/', methods=['GET'])
 def types():
-    """Flask Read Handler for types API Endpoint"""
+    """Generates types data"""
 
     data = []
 
@@ -190,12 +130,11 @@ def types():
                 "definition": ""
             })
 
-    return jsonify(sorted(data, key=lambda x: x["code"].lower()))
+    return sorted(data, key=lambda x: x["code"].lower())
 
 
-@app.route('/entrypoints/', methods=['GET'])
 def entrypoints():
-    """Flask Read Handler for entrypoints API endpoint"""
+    """Generates entrypoints data"""
 
     # TODO: This code is a workaround for an issue in solar-taxonomy (and perhaps pyoblib) that
     # the Monitoring Entrypoint has not metadata.  Thus there is one extra entrypoint in the non-detailed
@@ -220,12 +159,11 @@ def entrypoints():
                 "description": description
             })
 
-    return jsonify(sorted(data, key=lambda x: x["entrypoint"]))
+    return sorted(data, key=lambda x: x["entrypoint"])
 
 
-@app.route('/glossary/', methods=['GET'])
 def glossary():
-    """Flask Read Handler for glossary API Endpoint"""
+    """Generates glossary data"""
 
     data = []
     for item in sorted(reference.ACRONYMS.items()):
@@ -242,11 +180,11 @@ def glossary():
             "definition": item[0]
         })
 
-    return jsonify(data)
+    return data
 
 
-@app.route('/conceptdetail/<concept>/<taxonomy>', methods=['GET'])
 def concept_detail(concept, taxonomy):
+    """Generates concept_detail data"""
 
     concept = taxonomy.lower() + ":" + concept
 
@@ -331,19 +269,17 @@ def concept_detail(concept, taxonomy):
         "usages": usages
     }
 
-    return jsonify(data)
+    return data
 
 
-@app.route('/entrypointdetail/<entrypoint>/undefined', methods=['GET'])
 def entrypoint_detail(entrypoint):
+    """Generates entrypoint detail data"""
 
     r = relationships.create_json(entrypoint)
     if len(r) < 1:
         raise KeyError('Entrypoint {} not found'.format(entrypoint))
     data = relationships.create_json(entrypoint)
 
-    return jsonify(data)
+    return data
 
 
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
