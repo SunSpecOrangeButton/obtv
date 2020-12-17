@@ -208,13 +208,16 @@ def entrypoints():
             data.append({
                 "entrypoint": entrypoints_details[entrypoint].name,
                 "type": entrypoints_details[entrypoint].entrypoint_type.value,
-                "description": entrypoints_details[entrypoint].description
+                "description": reference.ENTRYPOINTS_DESCRIPTION[entrypoint]
             })
         else:
+            description = ""
+            if entrypoint in reference.ENTRYPOINTS_DESCRIPTION:
+                description = reference.ENTRYPOINTS_DESCRIPTION[entrypoint]
             data.append({
                 "entrypoint": entrypoint,
                 "type": "Documents",
-                "description": "None"
+                "description": description
             })
 
     return jsonify(sorted(data, key=lambda x: x["entrypoint"]))

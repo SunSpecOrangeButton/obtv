@@ -17,7 +17,7 @@ rm -rf dist
 rm -rf web-build
 mkdir resources
 cd viewer
-python3.7 generate_static_site.py
+python3.8 generate_static_site.py
 cd ..
 cp -r web web-build
 cd web-build
