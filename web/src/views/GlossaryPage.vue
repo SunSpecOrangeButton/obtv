@@ -50,34 +50,31 @@ export default {
 
 <style scoped>
 .glossary-search-container {
-  margin-top: 20px;
   display: grid;
-  grid-template-columns: 0px 250px 15px auto 25px;
-  grid-template-rows: 25px auto;
+  grid-template-columns: 0% 16em 1% 83%;
+  grid-template-rows: 23em auto;
+  padding-top: 1.25em;
 }
 
 .glossary-search-sidebar {
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
+  grid-column: 1 / 3;
 }
 
 .glossary-search-body {
-  grid-column: 4 / span 2;
-  grid-row: 1 / span 2;
+  grid-column: 4;
+  grid-row: 1 / 3;
+  overflow-y: scroll;
 }
 
 .glossary-count {
     grid-column:  2 / 3;
-    grid-row: 1 / 3;
-    place-self: start;
-    justify-self: center;
-    padding-top: 250px;
+    grid-row: 2;
+    text-align: center;
     font-weight: bold;
 }
 
 a {
   color: #4285f4;
 }
-
 
 </style>

@@ -13,7 +13,7 @@
 -->
 
 <template>
-    <nav class="navbar navbar-expand-md navbar-light navbar-custom">
+    <nav class="navbar navbar-expand-sm navbar-light navbar-custom">
         <router-link to="entrypoints" class="navbar-brand">
             <img id="oblogo" src="@/assets/ob.png" alt="Orange Button"/>
             <h1 class="app-title">Orange Button Taxonomy Viewer</h1>
@@ -58,10 +58,10 @@
 }
 nav {
   font-family: "Roboto Condensed";
-  font-size: 18px;
+  font-size: 1.1em;
   font-style: normal;
   display: grid;
-  grid-template-columns: 1300px 400px 1fr;
+  grid-template-columns: 30% 70%;
   padding-left: 20px;
   border-bottom: 1px solid #dadce0;
   padding-top: 12px;
@@ -88,7 +88,7 @@ nav {
 
 .app-title {
   font-family: "Roboto";
-  font-size: 25px;
+  font-size: 1.25em;
   font-weight: bold;
   display: inline;
   text-transform: uppercase;

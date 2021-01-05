@@ -55,34 +55,32 @@ export default {
 
 <style scoped>
 .entrypoint-search-container {
-  margin-top: 20px;
   display: grid;
-  grid-template-columns: 0px 250px 15px auto 25px;
-  grid-template-rows: 25px auto;
+  grid-template-columns: 0% 16em 1% 44% 41%;
+  grid-template-rows: 23em auto;
+  padding-top: 1.25em;
 }
 
 .entrypoint-search-sidebar {
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
+  grid-column: 1 / 3;
 }
 
 .entrypoint-search-body {
-  grid-column: 4 / span 2;
-  grid-row: 1 / span 2;
+  grid-column: 4;
+  grid-row: 1 / 3;
+  overflow-y: scroll;
 }
 
 .entrypoint-detail-sidebar {
-  grid-column: 6 / span 2;
-  grid-row: 2 / 3;
+  padding-left: 1em;
+  grid-column: 5;
 }
 
 .entrypoint-count {
-  grid-column:  2 / 3;
-  grid-row: 1 / 3;
-  place-self: start;
-  justify-self: center;
-  padding-top: 300px;
-  font-weight: bold;
+    grid-column:  2 / 3;
+    grid-row: 2;
+    text-align: center;
+    font-weight: bold;
 }
 
 a {

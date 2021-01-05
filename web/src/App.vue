@@ -40,20 +40,12 @@ html {
 }
 #app {
   font-family: "Montserrat";
+  font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   background-color: white;
   display: grid;
-  grid-template-rows: 70px 0px 1000px 10px 60px;
-}
-
-#router-v {
-  grid-row: 3 / 4;
-}
-
-#navbar {
-  grid-row: 1 / 2;
 }
 
 </style>

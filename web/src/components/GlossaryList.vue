@@ -150,35 +150,11 @@ export default {
 
 <style>
 .glossary-public-list-container {
-  display: grid;
-  grid-template-rows: 20px 720px 50px;
-  grid-template-columns: auto;
-  height: 100%;
-  padding-top: 5px;
-  width: 1500px;
+  height: 87vh;
 }
 
-li {
-  margin-top: -6px;
-  margin-bottom: -6px;
-}
-ul {
-  padding: 0;
-  list-style: none;
-}
-
-.glossary-public-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-color: white;
-  height: 725px;
-  justify-content: flex-start;
-  align-content: flex-start;
-  grid-row: 2 / 3;
-  grid-column: 1 /2;
-  width: 1500px;
-  #overflow-y: auto;
+.load-more-btn-container {
+  text-align: center;
 }
 
 @keyframes spin {
@@ -193,16 +169,5 @@ ul {
 a {
   color: #1d4679;
 }
-
-.glossary-table {
-  margin-left: 0px;
-}
-
-.load-more-btn-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
 
 </style>

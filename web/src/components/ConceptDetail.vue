@@ -87,9 +87,8 @@ h1 {
 }
 
 .public-filter {
-  width: 600px;
-  overflow-wrap: break-word;
-  padding: 5px;
+  overflow-y: scroll;
+  height: 87vh;
 }
 
 button {

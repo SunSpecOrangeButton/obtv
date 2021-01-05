@@ -50,9 +50,9 @@ export default {
 
 <style scoped>
     .entrypoint-detail-container {
-      width: 600px;
       overflow-wrap: break-word;
-      padding: 5px;
+      overflow-y: scroll;
+      height: 87vh;
     }
 
     h1 {

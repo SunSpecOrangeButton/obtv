@@ -51,28 +51,26 @@ export default {
 
 <style scoped>
 .unit-search-container {
-  margin-top: 20px;
   display: grid;
-  grid-template-columns: 0px 250px 15px auto 25px;
-  grid-template-rows: 25px auto;
+  grid-template-columns: 0% 16em 1% 83%;
+  grid-template-rows: 23em auto;
+  padding-top: 1.25em;
 }
 
 .unit-search-sidebar {
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
+  grid-column: 1 / 3;
 }
 
 .unit-search-body {
-  grid-column: 4 / span 2;
-  grid-row: 1 / span 2;
+  grid-column: 4;
+  grid-row: 1 / 3;
+  overflow-y: scroll;
 }
 
 .unit-count {
     grid-column:  2 / 3;
-    grid-row: 1 / 3;
-    place-self: start;
-    justify-self: center;
-    padding-top: 300px;
+    grid-row: 2;
+    text-align: center;
     font-weight: bold;
 }
 

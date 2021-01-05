@@ -56,34 +56,31 @@ export default {
 
 <style scoped>
 .concept-search-container {
-  margin-top: 20px;
   display: grid;
-  grid-template-columns: 0px 250px 15px auto 25px;
-  grid-template-rows: 25px auto;
+  grid-template-columns: 0% 16em 1% 44% 41%;
+  grid-template-rows: 23em auto;
+  padding-top: 1.25em;
 }
 
 .concept-search-sidebar {
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
+  grid-column: 1 / 3;
 }
 
 .concept-search-body {
-  grid-column: 4 / span 2;
-  grid-row: 1 / span 2;
-  height: 100%;
+  grid-column: 4;
+  grid-row: 1 / 3;
+  overflow-y: scroll;
 }
 
 .concept-detail-sidebar {
-  grid-column: 6 / span 2;
-  grid-row: 2 / 3;
+  padding-left: 1em;
+  grid-column: 5;
 }
 
 .concept-count {
     grid-column:  2 / 3;
-    grid-row: 1 / 3;
-    place-self: start;
-    justify-self: center;
-    padding-top: 340px;
+    grid-row: 2;
+    text-align: center;
     font-weight: bold;
 }
 
