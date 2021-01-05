@@ -43,6 +43,7 @@
                   <h1>Select entrypoint:</h1>
                   <b-form-select id="entryPointSelector" v-model="entryPointSelected" :options="$store.state.entryPointList" />
                 </label>
+                <a :href=filterMailtoLink>Email Link of Selected Entrypoint</a>
             </div>
             <div class="button-group">
                 <button type="button" class="btn btn-primary" @click="updateQuery">
@@ -62,11 +63,22 @@ import axios from "axios";
 export default {
   data() {
     return {
-      entryPointSelected: ''
+      entryPointSelected: 'All'
     }
   },
   beforeCreate() {
       this.$store.commit("callAPIentrypoints");
+  },
+  created() {
+    // if query params, create cookie
+    // query param form = ?views=
+    if (Object.keys(this.$route.query).length !== 0) {
+      let givenEntryPoint = this.$route.query['views'];
+      if (this.$store.state.entryPointList.includes(givenEntryPoint)) {
+        // setting entryPointSelected triggers the watch for it below, updating the data list
+        this.entryPointSelected = givenEntryPoint;
+      }
+    }
   },
   methods: {
     updateQuery() {
@@ -79,6 +91,15 @@ export default {
       this.$store.commit("clearConceptsChks");
       this.entryPointSelected = '';
       this.$store.commit("callAPI", "concepts/none");
+    }
+  },
+  computed: {
+    filterMailtoLink: function() {
+      let currentURL = window.location.href;
+      if (currentURL.indexOf("?") > 0) {
+        currentURL = currentURL.substring(0, currentURL.indexOf("?"));
+      }
+      return "mailto:?body=" + currentURL + "?views=" + this.entryPointSelected;
     }
   },
   watch: {
