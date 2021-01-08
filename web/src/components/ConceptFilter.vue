@@ -43,7 +43,8 @@
                   <h1>Select entrypoint:</h1>
                   <b-form-select id="entryPointSelector" v-model="entryPointSelected" :options="$store.state.entryPointList" />
                 </label>
-                <a :href=filterMailtoLink>Email Link of Selected Entrypoint</a>
+              Selected Entrypoint Link: <br>
+              <a href @click.prevent="copyLinkToClipboard">Copy to Clipboard</a> or <a :href=filterMailtoLink>Email</a>
             </div>
             <div class="button-group">
                 <button type="button" class="btn btn-primary" @click="updateQuery">
@@ -63,11 +64,11 @@ import axios from "axios";
 export default {
   data() {
     return {
-      entryPointSelected: 'All'
+      entryPointSelected: ''
     }
   },
   beforeCreate() {
-      this.$store.commit("callAPIentrypoints");
+    this.$store.commit("callAPIentrypoints");
   },
   created() {
     // if query params, create cookie
@@ -91,15 +92,23 @@ export default {
       this.$store.commit("clearConceptsChks");
       this.entryPointSelected = '';
       this.$store.commit("callAPI", "concepts/none");
-    }
-  },
-  computed: {
-    filterMailtoLink: function() {
+    },
+    getParameterizedURL() {
       let currentURL = window.location.href;
       if (currentURL.indexOf("?") > 0) {
         currentURL = currentURL.substring(0, currentURL.indexOf("?"));
       }
-      return "mailto:?body=" + currentURL + "?views=" + this.entryPointSelected;
+      return currentURL + "?views=" + this.entryPointSelected;
+    },
+    copyLinkToClipboard() {
+      navigator.clipboard.writeText(this.getParameterizedURL())
+        .then(() => { /* success */ })
+        .catch(() => { /* failed */ });
+    }
+  },
+  computed: {
+    filterMailtoLink: function() {
+      return "mailto:?body=" + this.getParameterizedURL();
     }
   },
   watch: {
