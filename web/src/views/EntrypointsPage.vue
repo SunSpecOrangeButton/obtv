@@ -57,7 +57,7 @@ export default {
 .entrypoint-search-container {
   display: grid;
   grid-template-columns: 0% 16em 1% 44% 41%;
-  grid-template-rows: 23em auto;
+  grid-template-rows: 16.75em auto;
   padding-top: 1.25em;
 }
 

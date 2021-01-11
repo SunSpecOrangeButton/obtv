@@ -52,7 +52,7 @@ export default {
 .glossary-search-container {
   display: grid;
   grid-template-columns: 0% 16em 1% 83%;
-  grid-template-rows: 23em auto;
+  grid-template-rows: 13.75em auto;
   padding-top: 1.25em;
 }
 

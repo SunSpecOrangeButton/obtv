@@ -103,7 +103,7 @@ label {
 
 .button-group {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   margin-bottom: 5px;
   margin-left: -17px;
 }

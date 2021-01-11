@@ -180,7 +180,8 @@ label {
 
 .button-group {
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  padding-left: 0.5em;
   margin-bottom: 5px;
   margin-left: -17px;
 }
