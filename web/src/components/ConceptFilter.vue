@@ -58,7 +58,7 @@
                 </label>
                 <label for="entryPointSelector">
                   <h1>Select entrypoint:</h1>
-                  <b-form-select id="entryPointSelector" v-model="entryPointSelected" :options="$store.state.entryPointList" />
+                  <b-form-select id="entryPointSelector" v-model="entryPointSelected" :options="entryPointList" />
                 </label>
               Selected Entrypoint Link: <br>
               <a href @click.prevent="copyLinkToClipboard">Copy to Clipboard</a> or <a :href=filterMailtoLink>Email</a>
@@ -78,7 +78,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      entryPointSelected: ''
+      entryPointSelected: 'none'
     }
   },
   beforeCreate() {
@@ -124,6 +124,14 @@ export default {
   computed: {
     filterMailtoLink: function() {
       return "mailto:?body=" + this.getParameterizedURL();
+    },
+    entryPointList: function() {
+      let items = [];
+      items.push({ value: 'none', text: '-- All --' });
+      for(let item of this.$store.state.entryPointList) {
+        items.push({ value: item, text: item });
+      }
+      return items;
     }
   },
   watch: {

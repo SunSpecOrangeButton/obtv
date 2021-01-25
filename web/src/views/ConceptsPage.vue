@@ -80,7 +80,8 @@ export default {
 .concept-count {
     grid-column:  2 / 3;
     grid-row: 2;
-    text-align: center;
+    text-align: left;
+    padding-left: 0.75em;
     font-weight: bold;
 }
 

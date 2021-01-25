@@ -69,7 +69,8 @@ export default {
 .glossary-count {
     grid-column:  2 / 3;
     grid-row: 2;
-    text-align: center;
+    padding-left: 0.5em;
+    text-align: left;
     font-weight: bold;
 }
 

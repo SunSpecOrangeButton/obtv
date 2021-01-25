@@ -79,7 +79,8 @@ export default {
 .entrypoint-count {
     grid-column:  2 / 3;
     grid-row: 2;
-    text-align: center;
+    text-align: left;
+    padding-left: 0.5em;
     font-weight: bold;
 }
 
